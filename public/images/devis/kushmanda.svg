@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="grad-कूष्माण्डा" cx="50%" cy="36%" r="72%">
+      <stop offset="0%" stop-color="#F6E6B4"/>
+      <stop offset="100%" stop-color="#AC8012"/>
+    </radialGradient>
+  </defs>
+  <circle cx="250" cy="250" r="250" fill="url(#grad-कूष्माण्डा)"/>
+  <circle cx="250" cy="250" r="237" fill="none" stroke="#D4A017" stroke-width="2" stroke-dasharray="3 7" opacity="0.85"/>
+  <circle cx="250" cy="250" r="222" fill="none" stroke="#D4A017" stroke-width="1" opacity="0.55"/>
+  <g transform="translate(250,224)">
+    
+    <circle cx="0" cy="-10" r="26" fill="#FDF8F0"/>
+    <line x1="34.0" y1="0.0" x2="62.0" y2="0.0" stroke="#FDF8F0" stroke-width="7" stroke-linecap="round"/><line x1="24.0" y1="24.0" x2="43.8" y2="43.8" stroke="#FDF8F0" stroke-width="7" stroke-linecap="round"/><line x1="0.0" y1="34.0" x2="0.0" y2="62.0" stroke="#FDF8F0" stroke-width="7" stroke-linecap="round"/><line x1="-24.0" y1="24.0" x2="-43.8" y2="43.8" stroke="#FDF8F0" stroke-width="7" stroke-linecap="round"/><line x1="-34.0" y1="0.0" x2="-62.0" y2="0.0" stroke="#FDF8F0" stroke-width="7" stroke-linecap="round"/><line x1="-24.0" y1="-24.0" x2="-43.8" y2="-43.8" stroke="#FDF8F0" stroke-width="7" stroke-linecap="round"/><line x1="-0.0" y1="-34.0" x2="-0.0" y2="-62.0" stroke="#FDF8F0" stroke-width="7" stroke-linecap="round"/><line x1="24.0" y1="-24.0" x2="43.8" y2="-43.8" stroke="#FDF8F0" stroke-width="7" stroke-linecap="round"/>
+  
+  </g>
+  <text x="250" y="466" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#FDF8F0" font-weight="600">कूष्माण्डा</text>
+</svg>

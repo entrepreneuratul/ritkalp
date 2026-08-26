@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="grad" cx="42%" cy="32%" r="78%">
+      <stop offset="0%" stop-color="#EF9A49"/>
+      <stop offset="60%" stop-color="#7A3308"/>
+      <stop offset="100%" stop-color="#7A3308"/>
+    </radialGradient>
+    <radialGradient id="vign" cx="50%" cy="50%" r="72%">
+      <stop offset="70%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.28"/>
+    </radialGradient>
+    <radialGradient id="tilak6mark" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#F5A0C1" stop-opacity="1"/><stop offset="55%" stop-color="#D6316C" stop-opacity="1"/><stop offset="100%" stop-color="#841D43" stop-opacity="1"/></radialGradient><filter id="tilak6glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+  </defs>
+  <circle cx="250" cy="250" r="250" fill="url(#grad)"/>
+  <circle cx="250" cy="250" r="250" fill="url(#vign)"/>
+  <circle cx="250" cy="250" r="237" fill="none" stroke="#6B2FA0" stroke-width="2" stroke-dasharray="3 7" opacity="0.85"/>
+  <circle cx="250" cy="250" r="222" fill="none" stroke="#6B2FA0" stroke-width="1" opacity="0.55"/>
+  <circle cx="250" cy="250" r="205" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.15"/>
+  <g transform="translate(250,222) scale(1.15)">
+    
+    <ellipse cx="0" cy="50" rx="40" ry="8" fill="#000" opacity="0.1"/>
+    <circle cx="0" cy="0" r="40" fill="#D6316C" opacity="0.2" filter="url(#tilak6glow)"/>
+    <path d="M-46,-26 Q0,-4 46,-26" stroke="#C4922F" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M-46,-26 Q0,-2 46,-26" stroke="#F0C866" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.8"/>
+    <path d="M-46,-26 Q-52,-38 -42,-48" stroke="#C4922F" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M46,-26 Q52,-38 42,-48" stroke="#C4922F" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <ellipse cx="0" cy="4" rx="17" ry="34" fill="url(#tilak6mark)"/>
+    <ellipse cx="-5" cy="-8" rx="4" ry="9" fill="#FFE1EC" opacity="0.7"/>
+    <g fill="#F5EBD8">
+      <ellipse cx="-30" cy="30" rx="5" ry="2.5" transform="rotate(-20 -30 30)"/>
+      <ellipse cx="-20" cy="40" rx="5" ry="2.5" transform="rotate(10 -20 40)"/>
+      <ellipse cx="26" cy="34" rx="5" ry="2.5" transform="rotate(25 26 34)"/>
+    </g>
+  </g>
+  <text x="250" y="466" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#FFF8ED" font-weight="600">भाई दूज</text>
+</svg>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="heroBg" cx="50%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#FDF8F0"/>
+      <stop offset="60%" stop-color="#F3E7CF"/>
+      <stop offset="100%" stop-color="#E3A5AB"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#heroBg)"/>
+  <g stroke="#7A1F2B" stroke-width="1" fill="none" opacity="0.12">
+    <circle cx="1250" cy="220" r="260" stroke-dasharray="3 8"/>
+    <circle cx="1250" cy="220" r="200"/>
+    <circle cx="1250" cy="220" r="140" stroke-dasharray="2 6"/>
+    <circle cx="250" cy="700" r="220" stroke-dasharray="3 8"/>
+    <circle cx="250" cy="700" r="160"/>
+  </g>
+  <circle cx="666.7" cy="162.3" r="5.8" fill="#D4A017" opacity="0.4"/><circle cx="466.6" cy="867.8" r="3.6" fill="#D4A017" opacity="0.4"/><circle cx="1423.6" cy="194.1" r="3.4" fill="#D4A017" opacity="0.4"/><circle cx="17.3" cy="231.1" r="2.4" fill="#D4A017" opacity="0.4"/><circle cx="459.7" cy="214.4" r="2.3" fill="#D4A017" opacity="0.4"/><circle cx="1528.8" cy="153.8" r="5.0" fill="#D4A017" opacity="0.4"/><circle cx="818.1" cy="556.5" r="4.4" fill="#D4A017" opacity="0.4"/><circle cx="22.3" cy="108.7" r="4.2" fill="#D4A017" opacity="0.4"/><circle cx="1092.3" cy="406.9" r="4.9" fill="#D4A017" opacity="0.4"/><circle cx="461.3" cy="620.2" r="4.1" fill="#D4A017" opacity="0.4"/><circle cx="210.4" cy="562.5" r="2.3" fill="#D4A017" opacity="0.4"/><circle cx="388.0" cy="855.8" r="2.1" fill="#D4A017" opacity="0.4"/><circle cx="193.2" cy="585.6" r="4.5" fill="#D4A017" opacity="0.4"/><circle cx="844.6" cy="55.1" r="5.8" fill="#D4A017" opacity="0.4"/><circle cx="378.0" cy="393.1" r="4.0" fill="#D4A017" opacity="0.4"/><circle cx="1061.9" cy="186.5" r="5.1" fill="#D4A017" opacity="0.4"/><circle cx="1255.1" cy="432.4" r="2.3" fill="#D4A017" opacity="0.4"/><circle cx="15.5" cy="85.7" r="3.4" fill="#D4A017" opacity="0.4"/><circle cx="399.4" cy="228.6" r="5.2" fill="#D4A017" opacity="0.4"/><circle cx="1310.5" cy="236.8" r="2.7" fill="#D4A017" opacity="0.4"/><circle cx="172.9" cy="657.6" r="4.7" fill="#D4A017" opacity="0.4"/><circle cx="1265.0" cy="573.5" r="2.0" fill="#D4A017" opacity="0.4"/><circle cx="195.9" cy="656.0" r="4.5" fill="#D4A017" opacity="0.4"/><circle cx="488.1" cy="376.8" r="3.7" fill="#D4A017" opacity="0.4"/><circle cx="837.7" cy="250.4" r="4.4" fill="#D4A017" opacity="0.4"/><circle cx="1007.4" cy="246.3" r="3.5" fill="#D4A017" opacity="0.4"/><circle cx="1033.6" cy="413.2" r="3.5" fill="#D4A017" opacity="0.4"/><circle cx="1196.7" cy="832.2" r="3.4" fill="#D4A017" opacity="0.4"/><circle cx="509.1" cy="47.6" r="5.8" fill="#D4A017" opacity="0.4"/><circle cx="1079.1" cy="829.7" r="4.7" fill="#D4A017" opacity="0.4"/><circle cx="1140.1" cy="858.7" r="2.4" fill="#D4A017" opacity="0.4"/><circle cx="1010.4" cy="357.5" r="2.0" fill="#D4A017" opacity="0.4"/><circle cx="28.7" cy="238.7" r="3.8" fill="#D4A017" opacity="0.4"/><circle cx="1154.6" cy="897.1" r="5.2" fill="#D4A017" opacity="0.4"/><circle cx="462.1" cy="892.1" r="4.2" fill="#D4A017" opacity="0.4"/><circle cx="813.0" cy="433.7" r="5.6" fill="#D4A017" opacity="0.4"/><circle cx="420.6" cy="133.4" r="5.5" fill="#D4A017" opacity="0.4"/><circle cx="1398.1" cy="719.5" r="2.5" fill="#D4A017" opacity="0.4"/><circle cx="1280.3" cy="95.8" r="5.7" fill="#D4A017" opacity="0.4"/><circle cx="1459.2" cy="427.1" r="4.6" fill="#D4A017" opacity="0.4"/>
+  
+  <g transform="translate(300,680) scale(1.4)">
+    <path d="M-45,16 Q0,64 45,16 Q24,40 0,40 Q-24,40 -45,16 Z" fill="#7A1F2B"/>
+    <ellipse cx="0" cy="14" rx="45" ry="11" fill="#7A1F2B"/>
+    <path d="M0,-8 C8,-24 -5,-32 0,-44 C5,-32 -8,-24 0,-8 Z" fill="#D4A017" opacity="0.9"/>
+  </g>
+  
+  <g transform="translate(500,760) scale(1)">
+    <path d="M-45,16 Q0,64 45,16 Q24,40 0,40 Q-24,40 -45,16 Z" fill="#7A1F2B"/>
+    <ellipse cx="0" cy="14" rx="45" ry="11" fill="#7A1F2B"/>
+    <path d="M0,-8 C8,-24 -5,-32 0,-44 C5,-32 -8,-24 0,-8 Z" fill="#D4A017" opacity="0.9"/>
+  </g>
+  
+  <g transform="translate(1150,720) scale(1.6)">
+    <path d="M-45,16 Q0,64 45,16 Q24,40 0,40 Q-24,40 -45,16 Z" fill="#7A1F2B"/>
+    <ellipse cx="0" cy="14" rx="45" ry="11" fill="#7A1F2B"/>
+    <path d="M0,-8 C8,-24 -5,-32 0,-44 C5,-32 -8,-24 0,-8 Z" fill="#D4A017" opacity="0.9"/>
+  </g>
+  
+  <g transform="translate(1350,640) scale(1.1)">
+    <path d="M-45,16 Q0,64 45,16 Q24,40 0,40 Q-24,40 -45,16 Z" fill="#7A1F2B"/>
+    <ellipse cx="0" cy="14" rx="45" ry="11" fill="#7A1F2B"/>
+    <path d="M0,-8 C8,-24 -5,-32 0,-44 C5,-32 -8,-24 0,-8 Z" fill="#D4A017" opacity="0.9"/>
+  </g>
+  <text x="800" y="850" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#AC8012" letter-spacing="3" opacity="0.8">HERO PHOTO PLACEHOLDER — REPLACE WITH DIYA / MARIGOLD / MANDALA PHOTOGRAPHY</text>
+</svg>

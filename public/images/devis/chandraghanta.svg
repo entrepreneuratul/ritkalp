@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="grad-चन्द्रघण्टा" cx="50%" cy="36%" r="72%">
+      <stop offset="0%" stop-color="#E3A5AB"/>
+      <stop offset="100%" stop-color="#B14956"/>
+    </radialGradient>
+  </defs>
+  <circle cx="250" cy="250" r="250" fill="url(#grad-चन्द्रघण्टा)"/>
+  <circle cx="250" cy="250" r="237" fill="none" stroke="#D4A017" stroke-width="2" stroke-dasharray="3 7" opacity="0.85"/>
+  <circle cx="250" cy="250" r="222" fill="none" stroke="#D4A017" stroke-width="1" opacity="0.55"/>
+  <g transform="translate(250,224)">
+    
+    <path d="M-10,-78 A46,46 0 1,0 -10,24 A36,36 0 1,1 -10,-78 Z" fill="#FDF8F0" opacity="0.9"/>
+    <path d="M-30,14 Q-30,58 0,64 Q30,58 30,14 Z" fill="#FDF8F0"/>
+    <rect x="-7" y="0" width="14" height="16" rx="4" fill="#FDF8F0"/>
+    <circle cx="0" cy="70" r="7" fill="#FDF8F0"/>
+  
+  </g>
+  <text x="250" y="466" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#FDF8F0" font-weight="600">चन्द्रघण्टा</text>
+</svg>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="grad" cx="42%" cy="32%" r="78%">
+      <stop offset="0%" stop-color="#EE71A3"/>
+      <stop offset="60%" stop-color="#841D43"/>
+      <stop offset="100%" stop-color="#841D43"/>
+    </radialGradient>
+    <radialGradient id="vign" cx="50%" cy="50%" r="72%">
+      <stop offset="70%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.28"/>
+    </radialGradient>
+    <radialGradient id="splash26c0" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#F2B705" stop-opacity="1"/><stop offset="70%" stop-color="#C48A02" stop-opacity="1"/><stop offset="100%" stop-color="#C48A02" stop-opacity="0"/></radialGradient><radialGradient id="splash26c1" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#4C9A4A" stop-opacity="1"/><stop offset="70%" stop-color="#2C5D2C" stop-opacity="1"/><stop offset="100%" stop-color="#2C5D2C" stop-opacity="0"/></radialGradient><radialGradient id="splash26c2" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#3B82C4" stop-opacity="1"/><stop offset="70%" stop-color="#1E4E78" stop-opacity="1"/><stop offset="100%" stop-color="#1E4E78" stop-opacity="0"/></radialGradient><radialGradient id="splash26c3" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#D6316C" stop-opacity="1"/><stop offset="70%" stop-color="#841D43" stop-opacity="1"/><stop offset="100%" stop-color="#841D43" stop-opacity="0"/></radialGradient><filter id="splash26glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+  <circle cx="250" cy="250" r="250" fill="url(#grad)"/>
+  <circle cx="250" cy="250" r="250" fill="url(#vign)"/>
+  <circle cx="250" cy="250" r="237" fill="none" stroke="#4C9A4A" stroke-width="2" stroke-dasharray="3 7" opacity="0.85"/>
+  <circle cx="250" cy="250" r="222" fill="none" stroke="#4C9A4A" stroke-width="1" opacity="0.55"/>
+  <circle cx="250" cy="250" r="205" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.15"/>
+  <g transform="translate(250,222) scale(1.15)">
+    
+    <circle cx="0" cy="0" r="50" fill="#D6316C" opacity="0.2" filter="url(#splash26glow)"/>
+    <path d="M23.0,0.0 Q46.0,0.0 69.0,0.0" stroke="url(#splash26c0)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><path d="M14.3,18.0 Q28.7,36.0 43.0,53.9" stroke="url(#splash26c2)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><path d="M-5.1,22.4 Q-10.2,44.8 -15.4,67.3" stroke="url(#splash26c0)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><path d="M-20.7,10.0 Q-41.4,20.0 -62.2,29.9" stroke="url(#splash26c2)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><path d="M-20.7,-10.0 Q-41.4,-20.0 -62.2,-29.9" stroke="url(#splash26c0)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><path d="M-5.1,-22.4 Q-10.2,-44.8 -15.4,-67.3" stroke="url(#splash26c2)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><path d="M14.3,-18.0 Q28.7,-36.0 43.0,-53.9" stroke="url(#splash26c0)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/>
+    <circle cx="46.0" cy="0.0" r="8" fill="url(#splash26c0)"/><circle cx="30.6" cy="14.8" r="5.5" fill="url(#splash26c1)"/><circle cx="28.7" cy="36.0" r="5.5" fill="url(#splash26c2)"/><circle cx="7.6" cy="33.1" r="8" fill="url(#splash26c3)"/><circle cx="-10.2" cy="44.8" r="5.5" fill="url(#splash26c0)"/><circle cx="-21.2" cy="26.6" r="5.5" fill="url(#splash26c1)"/><circle cx="-41.4" cy="20.0" r="8" fill="url(#splash26c2)"/><circle cx="-34.0" cy="0.0" r="5.5" fill="url(#splash26c3)"/><circle cx="-41.4" cy="-20.0" r="5.5" fill="url(#splash26c0)"/><circle cx="-21.2" cy="-26.6" r="8" fill="url(#splash26c1)"/><circle cx="-10.2" cy="-44.8" r="5.5" fill="url(#splash26c2)"/><circle cx="7.6" cy="-33.1" r="5.5" fill="url(#splash26c3)"/><circle cx="28.7" cy="-36.0" r="8" fill="url(#splash26c0)"/><circle cx="30.6" cy="-14.8" r="5.5" fill="url(#splash26c1)"/>
+    <circle cx="0" cy="0" r="20" fill="url(#splash26c0)"/>
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#FFF6D8" stroke-width="1.5" opacity="0.6"/>
+  </g>
+  <text x="250" y="466" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#FFFBF2" font-weight="600">रंगवाली होली</text>
+</svg>

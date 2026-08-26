@@ -1,0 +1,46 @@
+import { z } from "zod";
+
+// Shared by app/api/orders/route.ts (WhatsApp flow) and
+// app/api/payment/create-order/route.ts (Razorpay flow) — both accept
+// the same cart + customer shape, only `source` differs.
+
+export const CartLineSchema = z.object({
+  festivalSlug: z.string().min(1),
+  kitId: z.string().min(1),
+  quantity: z.number().int().min(1).max(20),
+  custom: z
+    .object({
+      name: z.string().min(1),
+      image: z.string().min(1),
+      items: z.array(z.string()),
+      // Display-only — never trusted for the actual charge. See
+      // baseKitId/extraIds below, which lib/orders.ts re-resolves and
+      // re-prices server-side, same as it already does for a canonical
+      // kit's price.
+      unitPrice: z.number().int().min(0),
+      /** Static content id (KitItem.id from lib/festivals/*.ts) of the
+       *  base kit this combo started from, if any — used server-side to
+       *  resolve the real DB Kit row (and its Inventoryfy SKU/price).
+       *  Not a DB row id. */
+      baseKitId: z.string().optional(),
+      /** Static content ids (BuilderExtraItem.id) of every tapped-on
+       *  extra — same resolution story as baseKitId. */
+      extraIds: z.array(z.string()),
+    })
+    .optional(),
+});
+
+export const OrderCustomerSchema = z.object({
+  name: z.string().min(1),
+  phone: z.string().min(6),
+  email: z.string().email().optional(),
+  addressLine: z.string().min(1),
+  city: z.string().min(1),
+  state: z.string().min(1),
+  pincode: z.string().min(4),
+});
+
+export const CreateOrderSchema = z.object({
+  items: z.array(CartLineSchema).min(1),
+  customer: OrderCustomerSchema,
+});

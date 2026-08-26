@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1600" height="900" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="heroBg" cx="50%" cy="32%" r="80%">
+      <stop offset="0%" stop-color="#FFF8ED"/>
+      <stop offset="55%" stop-color="#FBE0C4"/>
+      <stop offset="100%" stop-color="#6B2FA0"/>
+    </radialGradient>
+    <radialGradient id="diya17bowl" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#F5C97A" stop-opacity="1"/><stop offset="55%" stop-color="#C9862E" stop-opacity="1"/><stop offset="100%" stop-color="#7A4B12" stop-opacity="1"/></radialGradient><radialGradient id="diya17flame" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#FFFDE7" stop-opacity="1"/><stop offset="35%" stop-color="#FFC24B" stop-opacity="1"/><stop offset="70%" stop-color="#F2711F" stop-opacity="0.95"/><stop offset="100%" stop-color="#B4270C" stop-opacity="0"/></radialGradient><filter id="glow18" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#heroBg)"/>
+  <g stroke="#7A3308" stroke-width="1" fill="none" opacity="0.12">
+    <circle cx="1250" cy="220" r="260" stroke-dasharray="3 8"/>
+    <circle cx="1250" cy="220" r="200"/>
+    <circle cx="250" cy="700" r="220" stroke-dasharray="3 8"/>
+  </g>
+  <circle cx="1451.0" cy="447.9" r="2.1" fill="#6B2FA0" opacity="0.4"/><circle cx="1015.0" cy="613.0" r="3.3" fill="#6B2FA0" opacity="0.4"/><circle cx="732.6" cy="220.3" r="3.3" fill="#6B2FA0" opacity="0.4"/><circle cx="560.9" cy="349.9" r="3.9" fill="#6B2FA0" opacity="0.4"/><circle cx="135.5" cy="366.6" r="5.0" fill="#6B2FA0" opacity="0.4"/><circle cx="393.2" cy="360.8" r="4.1" fill="#6B2FA0" opacity="0.4"/><circle cx="1344.5" cy="289.8" r="4.3" fill="#6B2FA0" opacity="0.4"/><circle cx="1364.4" cy="155.0" r="2.9" fill="#6B2FA0" opacity="0.4"/><circle cx="1414.6" cy="402.8" r="3.6" fill="#6B2FA0" opacity="0.4"/><circle cx="342.9" cy="463.5" r="5.4" fill="#6B2FA0" opacity="0.4"/><circle cx="1043.3" cy="527.3" r="3.3" fill="#6B2FA0" opacity="0.4"/><circle cx="1124.5" cy="344.6" r="2.6" fill="#6B2FA0" opacity="0.4"/><circle cx="384.0" cy="581.2" r="4.0" fill="#6B2FA0" opacity="0.4"/><circle cx="1208.6" cy="529.5" r="4.2" fill="#6B2FA0" opacity="0.4"/><circle cx="521.6" cy="309.1" r="4.1" fill="#6B2FA0" opacity="0.4"/><circle cx="338.5" cy="361.0" r="4.5" fill="#6B2FA0" opacity="0.4"/><circle cx="1291.4" cy="109.9" r="3.1" fill="#6B2FA0" opacity="0.4"/><circle cx="1158.1" cy="305.1" r="2.3" fill="#6B2FA0" opacity="0.4"/><circle cx="57.4" cy="538.9" r="4.8" fill="#6B2FA0" opacity="0.4"/><circle cx="218.7" cy="525.5" r="2.2" fill="#6B2FA0" opacity="0.4"/><circle cx="895.4" cy="643.2" r="5.2" fill="#6B2FA0" opacity="0.4"/><circle cx="135.1" cy="291.8" r="4.4" fill="#6B2FA0" opacity="0.4"/><circle cx="1526.4" cy="368.9" r="2.3" fill="#6B2FA0" opacity="0.4"/><circle cx="193.1" cy="311.6" r="4.4" fill="#6B2FA0" opacity="0.4"/><circle cx="1543.6" cy="5.7" r="2.9" fill="#6B2FA0" opacity="0.4"/><circle cx="321.1" cy="202.1" r="5.0" fill="#6B2FA0" opacity="0.4"/><circle cx="788.2" cy="577.6" r="2.2" fill="#6B2FA0" opacity="0.4"/><circle cx="55.5" cy="363.7" r="2.4" fill="#6B2FA0" opacity="0.4"/><circle cx="860.0" cy="604.1" r="4.4" fill="#6B2FA0" opacity="0.4"/><circle cx="1135.0" cy="733.7" r="5.1" fill="#6B2FA0" opacity="0.4"/><circle cx="93.9" cy="291.3" r="3.5" fill="#6B2FA0" opacity="0.4"/><circle cx="1559.0" cy="681.2" r="2.8" fill="#6B2FA0" opacity="0.4"/><circle cx="258.8" cy="844.3" r="4.4" fill="#6B2FA0" opacity="0.4"/><circle cx="1375.7" cy="604.8" r="2.9" fill="#6B2FA0" opacity="0.4"/><circle cx="755.6" cy="448.7" r="2.4" fill="#6B2FA0" opacity="0.4"/><circle cx="36.1" cy="464.6" r="2.4" fill="#6B2FA0" opacity="0.4"/>
+  <g transform="translate(300,700) scale(1.5)">
+    <ellipse cx="0" cy="58" rx="46" ry="8" fill="#000" opacity="0.14"/>
+    <circle cx="0" cy="-18" r="34" fill="#FFC24B" opacity="0.35" filter="url(#glow18)"/>
+    <path d="M-48,18 Q0,66 48,18 Q46,10 40,8 Q0,26 -40,8 Q-46,10 -48,18 Z" fill="url(#diya17bowl)"/>
+    <ellipse cx="0" cy="16" rx="48" ry="12" fill="url(#diya17bowl)"/>
+    <ellipse cx="0" cy="14" rx="48" ry="11" fill="none" stroke="#FBE5B8" stroke-width="1.5" opacity="0.7"/>
+    <path d="M-16,4 Q0,-2 16,4" stroke="#FFEFC7" stroke-width="2" fill="none" opacity="0.8"/>
+    <path d="M0,10 C10,-16 -6,-30 0,-52 C6,-30 -10,-16 0,10 Z" fill="url(#diya17flame)"/>
+    <path d="M0,2 C5,-10 -3,-20 0,-34 C3,-20 -5,-10 0,2 Z" fill="#FFFDE7" opacity="0.9"/>
+    <line x1="0" y1="6" x2="0" y2="-4" stroke="#4A2E0E" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(540,780) scale(1.0)">
+    <ellipse cx="0" cy="58" rx="46" ry="8" fill="#000" opacity="0.14"/>
+    <circle cx="0" cy="-18" r="34" fill="#FFC24B" opacity="0.35" filter="url(#glow18)"/>
+    <path d="M-48,18 Q0,66 48,18 Q46,10 40,8 Q0,26 -40,8 Q-46,10 -48,18 Z" fill="url(#diya17bowl)"/>
+    <ellipse cx="0" cy="16" rx="48" ry="12" fill="url(#diya17bowl)"/>
+    <ellipse cx="0" cy="14" rx="48" ry="11" fill="none" stroke="#FBE5B8" stroke-width="1.5" opacity="0.7"/>
+    <path d="M-16,4 Q0,-2 16,4" stroke="#FFEFC7" stroke-width="2" fill="none" opacity="0.8"/>
+    <path d="M0,10 C10,-16 -6,-30 0,-52 C6,-30 -10,-16 0,10 Z" fill="url(#diya17flame)"/>
+    <path d="M0,2 C5,-10 -3,-20 0,-34 C3,-20 -5,-10 0,2 Z" fill="#FFFDE7" opacity="0.9"/>
+    <line x1="0" y1="6" x2="0" y2="-4" stroke="#4A2E0E" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(1140,740) scale(1.7)">
+    <ellipse cx="0" cy="58" rx="46" ry="8" fill="#000" opacity="0.14"/>
+    <circle cx="0" cy="-18" r="34" fill="#FFC24B" opacity="0.35" filter="url(#glow18)"/>
+    <path d="M-48,18 Q0,66 48,18 Q46,10 40,8 Q0,26 -40,8 Q-46,10 -48,18 Z" fill="url(#diya17bowl)"/>
+    <ellipse cx="0" cy="16" rx="48" ry="12" fill="url(#diya17bowl)"/>
+    <ellipse cx="0" cy="14" rx="48" ry="11" fill="none" stroke="#FBE5B8" stroke-width="1.5" opacity="0.7"/>
+    <path d="M-16,4 Q0,-2 16,4" stroke="#FFEFC7" stroke-width="2" fill="none" opacity="0.8"/>
+    <path d="M0,10 C10,-16 -6,-30 0,-52 C6,-30 -10,-16 0,10 Z" fill="url(#diya17flame)"/>
+    <path d="M0,2 C5,-10 -3,-20 0,-34 C3,-20 -5,-10 0,2 Z" fill="#FFFDE7" opacity="0.9"/>
+    <line x1="0" y1="6" x2="0" y2="-4" stroke="#4A2E0E" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(1360,640) scale(1.15)">
+    <ellipse cx="0" cy="58" rx="46" ry="8" fill="#000" opacity="0.14"/>
+    <circle cx="0" cy="-18" r="34" fill="#FFC24B" opacity="0.35" filter="url(#glow18)"/>
+    <path d="M-48,18 Q0,66 48,18 Q46,10 40,8 Q0,26 -40,8 Q-46,10 -48,18 Z" fill="url(#diya17bowl)"/>
+    <ellipse cx="0" cy="16" rx="48" ry="12" fill="url(#diya17bowl)"/>
+    <ellipse cx="0" cy="14" rx="48" ry="11" fill="none" stroke="#FBE5B8" stroke-width="1.5" opacity="0.7"/>
+    <path d="M-16,4 Q0,-2 16,4" stroke="#FFEFC7" stroke-width="2" fill="none" opacity="0.8"/>
+    <path d="M0,10 C10,-16 -6,-30 0,-52 C6,-30 -10,-16 0,10 Z" fill="url(#diya17flame)"/>
+    <path d="M0,2 C5,-10 -3,-20 0,-34 C3,-20 -5,-10 0,2 Z" fill="#FFFDE7" opacity="0.9"/>
+    <line x1="0" y1="6" x2="0" y2="-4" stroke="#4A2E0E" stroke-width="2" stroke-linecap="round"/></g><g transform="translate(860,800) scale(0.85)">
+    <ellipse cx="0" cy="58" rx="46" ry="8" fill="#000" opacity="0.14"/>
+    <circle cx="0" cy="-18" r="34" fill="#FFC24B" opacity="0.35" filter="url(#glow18)"/>
+    <path d="M-48,18 Q0,66 48,18 Q46,10 40,8 Q0,26 -40,8 Q-46,10 -48,18 Z" fill="url(#diya17bowl)"/>
+    <ellipse cx="0" cy="16" rx="48" ry="12" fill="url(#diya17bowl)"/>
+    <ellipse cx="0" cy="14" rx="48" ry="11" fill="none" stroke="#FBE5B8" stroke-width="1.5" opacity="0.7"/>
+    <path d="M-16,4 Q0,-2 16,4" stroke="#FFEFC7" stroke-width="2" fill="none" opacity="0.8"/>
+    <path d="M0,10 C10,-16 -6,-30 0,-52 C6,-30 -10,-16 0,10 Z" fill="url(#diya17flame)"/>
+    <path d="M0,2 C5,-10 -3,-20 0,-34 C3,-20 -5,-10 0,2 Z" fill="#FFFDE7" opacity="0.9"/>
+    <line x1="0" y1="6" x2="0" y2="-4" stroke="#4A2E0E" stroke-width="2" stroke-linecap="round"/></g>
+  <text x="800" y="850" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#7A3308" letter-spacing="3" opacity="0.7">HERO PHOTO PLACEHOLDER — REPLACE WITH DIYA / RANGOLI / LAKSHMI PUJA PHOTOGRAPHY</text>
+</svg>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EE71A3"/>
+      <stop offset="100%" stop-color="#FBD0E0"/>
+    </linearGradient>
+    <radialGradient id="spot" cx="50%" cy="38%" r="55%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="fire29core" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#FFFCE0" stop-opacity="1"/><stop offset="35%" stop-color="#FFD24B" stop-opacity="1"/><stop offset="65%" stop-color="#F2711F" stop-opacity="1"/><stop offset="100%" stop-color="#8C1D0E" stop-opacity="1"/></radialGradient><radialGradient id="fire29side" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#FFE9A8" stop-opacity="1"/><stop offset="50%" stop-color="#F2A21F" stop-opacity="1"/><stop offset="100%" stop-color="#B4270C" stop-opacity="1"/></radialGradient><linearGradient id="fire29log" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8A5A2E" stop-opacity="1"/><stop offset="100%" stop-color="#4A2E12" stop-opacity="1"/></linearGradient><filter id="fire29glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#spot)"/>
+  <g stroke="#841D43" stroke-width="1.5" fill="none" opacity="0.28">
+    <circle cx="400" cy="225" r="170" stroke-dasharray="4 7"/>
+    <circle cx="400" cy="225" r="136"/>
+  </g>
+  <g transform="translate(400,228) scale(1.4)">
+    
+    <ellipse cx="0" cy="52" rx="60" ry="10" fill="#000" opacity="0.16"/>
+    <circle cx="0" cy="-10" r="58" fill="#F2711F" opacity="0.28" filter="url(#fire29glow)"/>
+    <rect x="-42" y="30" width="84" height="15" rx="5" fill="url(#fire29log)"/>
+    <rect x="-30" y="12" width="64" height="15" rx="5" fill="url(#fire29log)" transform="rotate(9 0 20)"/>
+    <g stroke="#2E1B08" stroke-width="1" opacity="0.4">
+      <line x1="-30" y1="38" x2="30" y2="38"/>
+      <line x1="-24" y1="19" x2="30" y2="19"/>
+    </g>
+    <path d="M-30,14 C-22,-10 -38,-26 -28,-50 C-18,-30 -34,-16 -30,14 Z" fill="url(#fire29side)"/>
+    <path d="M30,14 C22,-10 38,-26 28,-50 C18,-30 34,-16 30,14 Z" fill="url(#fire29side)"/>
+    <path d="M0,10 C16,-22 -10,-46 0,-84 C11,-46 -16,-22 0,10 Z" fill="url(#fire29core)"/>
+    <path d="M0,-4 C8,-24 -5,-38 0,-60 C5,-38 -8,-24 0,-4 Z" fill="#FFFCE0" opacity="0.85"/>
+    <g fill="#FFC24B">
+      <circle cx="14" cy="-70" r="2.5" opacity="0.85"/>
+      <circle cx="-18" cy="-78" r="2" opacity="0.7"/>
+      <circle cx="6" cy="-92" r="1.6" opacity="0.55"/>
+    </g>
+  </g>
+  <rect x="0" y="500" width="800" height="100" fill="#841D43" opacity="0.94"/>
+  <rect x="0" y="500" width="800" height="3" fill="#841D43"/>
+  <text x="400" y="558" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="32" fill="#FFFBF2" font-weight="600">Holika Dahan Kit</text>
+</svg>

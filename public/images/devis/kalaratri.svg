@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="grad-कालरात्रि" cx="50%" cy="36%" r="72%">
+      <stop offset="0%" stop-color="#671A24"/>
+      <stop offset="100%" stop-color="#2E0C10"/>
+    </radialGradient>
+  </defs>
+  <circle cx="250" cy="250" r="250" fill="url(#grad-कालरात्रि)"/>
+  <circle cx="250" cy="250" r="237" fill="none" stroke="#D4A017" stroke-width="2" stroke-dasharray="3 7" opacity="0.85"/>
+  <circle cx="250" cy="250" r="222" fill="none" stroke="#D4A017" stroke-width="1" opacity="0.55"/>
+  <g transform="translate(250,224)">
+    
+    <path d="M-10,-78 A46,46 0 1,0 -10,24 A36,36 0 1,1 -10,-78 Z" fill="#FDF8F0" opacity="0.4"/>
+    <path d="M0,-18 C15,-46 -8,-62 0,-88 C8,-62 -15,-46 0,-18 Z" fill="#FDF8F0"/>
+    <circle cx="48" cy="-52" r="3.5" fill="#FDF8F0"/>
+    <circle cx="-54" cy="2" r="3.5" fill="#FDF8F0"/>
+    <circle cx="38" cy="34" r="3" fill="#FDF8F0"/>
+    <circle cx="-38" cy="-40" r="2.5" fill="#FDF8F0"/>
+  
+  </g>
+  <text x="250" y="466" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#FDF8F0" font-weight="600">कालरात्रि</text>
+</svg>

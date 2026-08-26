@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EE71A3"/>
+      <stop offset="100%" stop-color="#FBD0E0"/>
+    </linearGradient>
+    <radialGradient id="spot" cx="50%" cy="38%" r="55%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="fire27core" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#FFFCE0" stop-opacity="1"/><stop offset="35%" stop-color="#FFD24B" stop-opacity="1"/><stop offset="65%" stop-color="#F2711F" stop-opacity="1"/><stop offset="100%" stop-color="#8C1D0E" stop-opacity="1"/></radialGradient><radialGradient id="fire27side" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#FFE9A8" stop-opacity="1"/><stop offset="50%" stop-color="#F2A21F" stop-opacity="1"/><stop offset="100%" stop-color="#B4270C" stop-opacity="1"/></radialGradient><linearGradient id="fire27log" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8A5A2E" stop-opacity="1"/><stop offset="100%" stop-color="#4A2E12" stop-opacity="1"/></linearGradient><filter id="fire27glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter><radialGradient id="splash28c0" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#F2B705" stop-opacity="1"/><stop offset="70%" stop-color="#C48A02" stop-opacity="1"/><stop offset="100%" stop-color="#C48A02" stop-opacity="0"/></radialGradient><radialGradient id="splash28c1" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#4C9A4A" stop-opacity="1"/><stop offset="70%" stop-color="#2C5D2C" stop-opacity="1"/><stop offset="100%" stop-color="#2C5D2C" stop-opacity="0"/></radialGradient><radialGradient id="splash28c2" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#3B82C4" stop-opacity="1"/><stop offset="70%" stop-color="#1E4E78" stop-opacity="1"/><stop offset="100%" stop-color="#1E4E78" stop-opacity="0"/></radialGradient><radialGradient id="splash28c3" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#D6316C" stop-opacity="1"/><stop offset="70%" stop-color="#841D43" stop-opacity="1"/><stop offset="100%" stop-color="#841D43" stop-opacity="0"/></radialGradient><filter id="splash28glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#spot)"/>
+  <g stroke="#841D43" stroke-width="1.5" fill="none" opacity="0.28">
+    <circle cx="400" cy="225" r="170" stroke-dasharray="4 7"/>
+    <circle cx="400" cy="225" r="136"/>
+  </g>
+  <g transform="translate(400,228) scale(1.0)">
+    <g transform="translate(-85,20) scale(0.62)">
+    <ellipse cx="0" cy="52" rx="60" ry="10" fill="#000" opacity="0.16"/>
+    <circle cx="0" cy="-10" r="58" fill="#F2711F" opacity="0.28" filter="url(#fire27glow)"/>
+    <rect x="-42" y="30" width="84" height="15" rx="5" fill="url(#fire27log)"/>
+    <rect x="-30" y="12" width="64" height="15" rx="5" fill="url(#fire27log)" transform="rotate(9 0 20)"/>
+    <g stroke="#2E1B08" stroke-width="1" opacity="0.4">
+      <line x1="-30" y1="38" x2="30" y2="38"/>
+      <line x1="-24" y1="19" x2="30" y2="19"/>
+    </g>
+    <path d="M-30,14 C-22,-10 -38,-26 -28,-50 C-18,-30 -34,-16 -30,14 Z" fill="url(#fire27side)"/>
+    <path d="M30,14 C22,-10 38,-26 28,-50 C18,-30 34,-16 30,14 Z" fill="url(#fire27side)"/>
+    <path d="M0,10 C16,-22 -10,-46 0,-84 C11,-46 -16,-22 0,10 Z" fill="url(#fire27core)"/>
+    <path d="M0,-4 C8,-24 -5,-38 0,-60 C5,-38 -8,-24 0,-4 Z" fill="#FFFCE0" opacity="0.85"/>
+    <g fill="#FFC24B">
+      <circle cx="14" cy="-70" r="2.5" opacity="0.85"/>
+      <circle cx="-18" cy="-78" r="2" opacity="0.7"/>
+      <circle cx="6" cy="-92" r="1.6" opacity="0.55"/>
+    </g></g>
+    <g transform="translate(90,-10) scale(0.62)">
+    <circle cx="0" cy="0" r="50" fill="#D6316C" opacity="0.2" filter="url(#splash28glow)"/>
+    <path d="M23.0,0.0 Q46.0,0.0 69.0,0.0" stroke="url(#splash28c0)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><path d="M14.3,18.0 Q28.7,36.0 43.0,53.9" stroke="url(#splash28c2)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><path d="M-5.1,22.4 Q-10.2,44.8 -15.4,67.3" stroke="url(#splash28c0)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><path d="M-20.7,10.0 Q-41.4,20.0 -62.2,29.9" stroke="url(#splash28c2)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><path d="M-20.7,-10.0 Q-41.4,-20.0 -62.2,-29.9" stroke="url(#splash28c0)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><path d="M-5.1,-22.4 Q-10.2,-44.8 -15.4,-67.3" stroke="url(#splash28c2)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><path d="M14.3,-18.0 Q28.7,-36.0 43.0,-53.9" stroke="url(#splash28c0)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/>
+    <circle cx="46.0" cy="0.0" r="8" fill="url(#splash28c0)"/><circle cx="30.6" cy="14.8" r="5.5" fill="url(#splash28c1)"/><circle cx="28.7" cy="36.0" r="5.5" fill="url(#splash28c2)"/><circle cx="7.6" cy="33.1" r="8" fill="url(#splash28c3)"/><circle cx="-10.2" cy="44.8" r="5.5" fill="url(#splash28c0)"/><circle cx="-21.2" cy="26.6" r="5.5" fill="url(#splash28c1)"/><circle cx="-41.4" cy="20.0" r="8" fill="url(#splash28c2)"/><circle cx="-34.0" cy="0.0" r="5.5" fill="url(#splash28c3)"/><circle cx="-41.4" cy="-20.0" r="5.5" fill="url(#splash28c0)"/><circle cx="-21.2" cy="-26.6" r="8" fill="url(#splash28c1)"/><circle cx="-10.2" cy="-44.8" r="5.5" fill="url(#splash28c2)"/><circle cx="7.6" cy="-33.1" r="5.5" fill="url(#splash28c3)"/><circle cx="28.7" cy="-36.0" r="8" fill="url(#splash28c0)"/><circle cx="30.6" cy="-14.8" r="5.5" fill="url(#splash28c1)"/>
+    <circle cx="0" cy="0" r="20" fill="url(#splash28c0)"/>
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#FFF6D8" stroke-width="1.5" opacity="0.6"/></g>
+  </g>
+  <rect x="0" y="500" width="800" height="100" fill="#841D43" opacity="0.94"/>
+  <rect x="0" y="500" width="800" height="3" fill="#841D43"/>
+  <text x="400" y="558" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="32" fill="#FFFBF2" font-weight="600">Complete Holi Combo</text>
+</svg>

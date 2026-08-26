@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EF9A49"/>
+      <stop offset="100%" stop-color="#FBE0C4"/>
+    </linearGradient>
+    <radialGradient id="spot" cx="50%" cy="38%" r="55%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="diya7bowl" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#F5C97A" stop-opacity="1"/><stop offset="55%" stop-color="#C9862E" stop-opacity="1"/><stop offset="100%" stop-color="#7A4B12" stop-opacity="1"/></radialGradient><radialGradient id="diya7flame" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#FFFDE7" stop-opacity="1"/><stop offset="35%" stop-color="#FFC24B" stop-opacity="1"/><stop offset="70%" stop-color="#F2711F" stop-opacity="0.95"/><stop offset="100%" stop-color="#B4270C" stop-opacity="0"/></radialGradient><filter id="glow8" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter><radialGradient id="coin9face" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#FFF4C2" stop-opacity="1"/><stop offset="45%" stop-color="#E9BE4D" stop-opacity="1"/><stop offset="80%" stop-color="#B9862A" stop-opacity="1"/><stop offset="100%" stop-color="#8A5F17" stop-opacity="1"/></radialGradient><radialGradient id="coin9face2" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#FFF9DE" stop-opacity="1"/><stop offset="45%" stop-color="#F0C866" stop-opacity="1"/><stop offset="80%" stop-color="#C4922F" stop-opacity="1"/><stop offset="100%" stop-color="#8A5F17" stop-opacity="1"/></radialGradient><linearGradient id="lotus10petal" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F4E0FF" stop-opacity="1"/><stop offset="55%" stop-color="#B67CE0" stop-opacity="1"/><stop offset="100%" stop-color="#6B2FA0" stop-opacity="1"/></linearGradient><linearGradient id="lotus10petalBack" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E7CBF6" stop-opacity="1"/><stop offset="100%" stop-color="#8B47BD" stop-opacity="1"/></linearGradient><radialGradient id="lotus10center" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#FFF6D8" stop-opacity="1"/><stop offset="60%" stop-color="#F2B705" stop-opacity="1"/><stop offset="100%" stop-color="#C48A02" stop-opacity="1"/></radialGradient><filter id="lotus10glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#spot)"/>
+  <g stroke="#7A3308" stroke-width="1.5" fill="none" opacity="0.28">
+    <circle cx="400" cy="225" r="170" stroke-dasharray="4 7"/>
+    <circle cx="400" cy="225" r="136"/>
+  </g>
+  <g transform="translate(400,228) scale(1.0)">
+    <g transform="translate(-95,25) scale(0.62)">
+    <ellipse cx="0" cy="58" rx="46" ry="8" fill="#000" opacity="0.14"/>
+    <circle cx="0" cy="-18" r="34" fill="#FFC24B" opacity="0.35" filter="url(#glow8)"/>
+    <path d="M-48,18 Q0,66 48,18 Q46,10 40,8 Q0,26 -40,8 Q-46,10 -48,18 Z" fill="url(#diya7bowl)"/>
+    <ellipse cx="0" cy="16" rx="48" ry="12" fill="url(#diya7bowl)"/>
+    <ellipse cx="0" cy="14" rx="48" ry="11" fill="none" stroke="#FBE5B8" stroke-width="1.5" opacity="0.7"/>
+    <path d="M-16,4 Q0,-2 16,4" stroke="#FFEFC7" stroke-width="2" fill="none" opacity="0.8"/>
+    <path d="M0,10 C10,-16 -6,-30 0,-52 C6,-30 -10,-16 0,10 Z" fill="url(#diya7flame)"/>
+    <path d="M0,2 C5,-10 -3,-20 0,-34 C3,-20 -5,-10 0,2 Z" fill="#FFFDE7" opacity="0.9"/>
+    <line x1="0" y1="6" x2="0" y2="-4" stroke="#4A2E0E" stroke-width="2" stroke-linecap="round"/></g>
+    <g transform="translate(95,15) scale(0.62)">
+    <ellipse cx="-13" cy="18" rx="42" ry="10" fill="#000" opacity="0.12"/>
+    <circle cx="-14" cy="10" r="38" fill="url(#coin9face)"/>
+    <circle cx="-14" cy="10" r="38" fill="none" stroke="#7A5312" stroke-width="1.5" opacity="0.5"/>
+    <circle cx="18" cy="-8" r="38" fill="url(#coin9face2)"/>
+    <circle cx="18" cy="-8" r="38" fill="none" stroke="#8A5F17" stroke-width="2"/>
+    <circle cx="18" cy="-8" r="27" fill="none" stroke="#FFF4C2" stroke-width="1.5" stroke-dasharray="2 4" opacity="0.75"/>
+    <circle cx="18" cy="-8" r="19" fill="none" stroke="#B9862A" stroke-width="1" opacity="0.6"/>
+    <text x="18" y="1" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#7A5312" font-weight="700">₹</text>
+    <path d="M2,-30 A34,34 0 0 1 34,-16" stroke="#FFFDF0" stroke-width="3" fill="none" opacity="0.8" stroke-linecap="round"/></g>
+    <g transform="translate(0,-95) scale(0.62)">
+    <ellipse cx="0" cy="66" rx="50" ry="9" fill="#000" opacity="0.1"/>
+    <circle cx="0" cy="0" r="46" fill="#F2B705" opacity="0.25" filter="url(#lotus10glow)"/>
+    <ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus10petalBack)" opacity="0.85" transform="rotate(22.5)"/><ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus10petalBack)" opacity="0.85" transform="rotate(67.5)"/><ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus10petalBack)" opacity="0.85" transform="rotate(112.5)"/><ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus10petalBack)" opacity="0.85" transform="rotate(157.5)"/><ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus10petalBack)" opacity="0.85" transform="rotate(202.5)"/><ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus10petalBack)" opacity="0.85" transform="rotate(247.5)"/><ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus10petalBack)" opacity="0.85" transform="rotate(292.5)"/><ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus10petalBack)" opacity="0.85" transform="rotate(337.5)"/>
+    <ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus10petal)" transform="rotate(0)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(0)"/><ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus10petal)" transform="rotate(45)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(45)"/><ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus10petal)" transform="rotate(90)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(90)"/><ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus10petal)" transform="rotate(135)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(135)"/><ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus10petal)" transform="rotate(180)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(180)"/><ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus10petal)" transform="rotate(225)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(225)"/><ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus10petal)" transform="rotate(270)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(270)"/><ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus10petal)" transform="rotate(315)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(315)"/>
+    <circle cx="0" cy="0" r="17" fill="url(#lotus10center)"/>
+    <circle cx="0" cy="0" r="17" fill="none" stroke="#8A5F17" stroke-width="1" opacity="0.4"/></g>
+  </g>
+  <rect x="0" y="500" width="800" height="100" fill="#7A3308" opacity="0.94"/>
+  <rect x="0" y="500" width="800" height="3" fill="#7A3308"/>
+  <text x="400" y="558" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="32" fill="#FFF8ED" font-weight="600">Complete Diwali Box</text>
+</svg>

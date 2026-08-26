@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FDF8F0"/>
+      <stop offset="100%" stop-color="#F6E6B4"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <g stroke="#B14956" stroke-width="1.5" fill="none" opacity="0.3">
+    <circle cx="400" cy="240" r="165" stroke-dasharray="4 7"/>
+    <circle cx="400" cy="240" r="132"/>
+  </g>
+  <g transform="translate(400,240) scale(1.9)">
+    
+      <g><circle cx="-90.1" cy="-68.0" r="7.6" fill="#D4A017"/><circle cx="-93.0" cy="-61.0" r="7.6" fill="#D4A017"/><circle cx="-100.0" cy="-58.1" r="7.6" fill="#D4A017"/><circle cx="-107.0" cy="-61.0" r="7.6" fill="#D4A017"/><circle cx="-109.9" cy="-68.0" r="7.6" fill="#D4A017"/><circle cx="-107.0" cy="-75.0" r="7.6" fill="#D4A017"/><circle cx="-100.0" cy="-77.9" r="7.6" fill="#D4A017"/><circle cx="-93.0" cy="-75.0" r="7.6" fill="#D4A017"/><circle cx="-100" cy="-68" r="6.3" fill="#5C4309"/></g>
+      <g><circle cx="108.8" cy="-64.0" r="6.7" fill="#B14956"/><circle cx="106.2" cy="-57.8" r="6.7" fill="#B14956"/><circle cx="100.0" cy="-55.2" r="6.7" fill="#B14956"/><circle cx="93.8" cy="-57.8" r="6.7" fill="#B14956"/><circle cx="91.2" cy="-64.0" r="6.7" fill="#B14956"/><circle cx="93.8" cy="-70.2" r="6.7" fill="#B14956"/><circle cx="100.0" cy="-72.8" r="6.7" fill="#B14956"/><circle cx="106.2" cy="-70.2" r="6.7" fill="#B14956"/><circle cx="100" cy="-64" r="5.6" fill="#5C4309"/></g>
+      
+  <g>
+    <path d="M-58,20 Q0,84 58,20 Q30,52 0,52 Q-30,52 -58,20 Z" fill="#B14956"/>
+    <ellipse cx="0" cy="18" rx="58" ry="15" fill="#B14956"/>
+    <path d="M0,-12 C11,-34 -7,-46 0,-62 C7,-46 -11,-34 0,-12 Z" fill="#D4A017"/>
+  </g>
+    
+  </g>
+  <rect x="0" y="500" width="800" height="100" fill="#B14956" opacity="0.94"/>
+  <text x="400" y="558" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="34" fill="#FDF8F0" font-weight="600">Daily Puja Kit</text>
+</svg>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FDF8F0"/>
+      <stop offset="100%" stop-color="#FBF4DE"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <g stroke="#D07680" stroke-width="1.5" fill="none" opacity="0.3">
+    <circle cx="400" cy="235" r="165" stroke-dasharray="4 7"/>
+    <circle cx="400" cy="235" r="132"/>
+  </g>
+  <g transform="translate(400,235) scale(1.25)">
+    
+      <path d="M-135,130 Q-65,160 0,148 Q65,160 135,130 L135,195 Q0,222 -135,195 Z" fill="#B14956" opacity="0.92"/>
+      <circle cx="-115" cy="100" r="7" fill="#D4A017" opacity="0.85"/>
+      <circle cx="115" cy="95" r="7" fill="#D4A017" opacity="0.85"/>
+      <circle cx="-140" cy="40" r="5" fill="#D4A017" opacity="0.7"/>
+      <circle cx="142" cy="35" r="5" fill="#D4A017" opacity="0.7"/>
+      
+  <g>
+    <path d="M-58,25 L-58,-6 L-32,-46 L-11,-14 L0,-52 L11,-14 L32,-46 L58,-6 L58,25 Z" fill="#D4A017"/>
+    <circle cx="0" cy="-52" r="9" fill="#7A1F2B"/>
+    <circle cx="-32" cy="-46" r="6.5" fill="#7A1F2B"/>
+    <circle cx="32" cy="-46" r="6.5" fill="#7A1F2B"/>
+    <rect x="-58" y="25" width="116" height="16" rx="5" fill="#D4A017"/>
+    <circle cx="-30" cy="33" r="3.5" fill="#7A1F2B"/>
+    <circle cx="0" cy="33" r="3.5" fill="#7A1F2B"/>
+    <circle cx="30" cy="33" r="3.5" fill="#7A1F2B"/>
+  </g>
+    
+  </g>
+  <rect x="0" y="500" width="800" height="100" fill="#D07680" opacity="0.94"/>
+  <text x="400" y="558" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="34" fill="#FDF8F0" font-weight="600">Maa Durga Shringar Kit</text>
+</svg>

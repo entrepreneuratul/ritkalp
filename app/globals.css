@@ -1,0 +1,309 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Static fallback paint for <body>, shown for an instant before the
+   active festival's themed wrapper (app/[festival]/layout.tsx, which
+   sets bg-surface/text-primary-900 from that festival's CSS vars —
+   see lib/theme.ts) takes over. Not tied to any one festival's colors
+   on purpose — just a safe, neutral warm base. */
+body {
+  color: #2e0c10;
+  background: #fdf8f0;
+}
+
+:root {
+  /* A gentle "overshoot" spring curve — used everywhere something
+     should feel like it has weight/bounce (cards lifting, buttons
+     pressing, the day-guide chip switching) instead of flat linear
+     motion. This is the single biggest lever for "modern/premium"
+     feel across the whole site, so it's centralized here once. */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Scroll-fade-in utility: paired with the <FadeIn> component, which
+     toggles the `.is-visible` class on when the element enters the
+     viewport (see components/FadeIn.tsx). Scale+blur in, not just a
+     slide, for a slightly richer entrance. */
+  .fade-in-section {
+    opacity: 0;
+    transform: translateY(28px) scale(0.97);
+    filter: blur(4px);
+    transition: opacity 0.7s var(--ease-smooth), transform 0.7s var(--ease-smooth),
+      filter 0.7s var(--ease-smooth);
+  }
+  .fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+
+  /* Thin accent divider used between sections as a subtle motif. Reads
+     the active festival's accent color via its CSS var. */
+  .divider-motif {
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgb(var(--color-accent-500)) 20%,
+      rgb(var(--color-accent-500)) 80%,
+      transparent
+    );
+    height: 1px;
+  }
+
+  /* Press feedback for any tappable control — a quick, weighty squash
+     on click that reads as "responsive" rather than static. */
+  .press-feedback {
+    transition: transform 0.15s var(--ease-spring);
+  }
+  .press-feedback:active {
+    transform: scale(0.95);
+  }
+
+  /* Ambient glow shadow that appears on hover, tinted with the active
+     festival's accent color — used on kit cards / feature cards so
+     hovering feels like the card is lifting into light, not just
+     moving. */
+  .hover-glow {
+    transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-smooth);
+  }
+  .hover-glow:hover {
+    box-shadow: 0 24px 48px -12px rgb(var(--color-accent-500) / 0.35),
+      0 8px 20px -6px rgb(var(--color-primary-900) / 0.15);
+  }
+
+  /* Whole-page transition when the festival switcher swaps routes —
+     see app/[festival]/page.tsx. */
+  .festival-fade-in {
+    animation: festival-fade 0.6s var(--ease-smooth) both;
+  }
+}
+
+/* Cart badge "pop" — replayed by giving the badge a key={totalItems}
+   in CartIcon.tsx, so every add-to-cart gives a satisfying little
+   bounce instead of the number just silently changing. */
+@keyframes badge-pop {
+  0% {
+    transform: scale(0.4);
+  }
+  60% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes festival-fade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slow, gentle drift for decorative sparkle/petal dots — see the
+   floating dots in components/Hero.tsx. Randomized delay/duration per
+   dot (inline style) keeps them from moving in visible lockstep. */
+@keyframes float-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: var(--dot-opacity, 0.5);
+  }
+  50% {
+    transform: translate(var(--drift-x, 6px), var(--drift-y, -10px)) scale(1.15);
+    opacity: calc(var(--dot-opacity, 0.5) * 1.6);
+  }
+}
+.float-drift {
+  animation: float-drift var(--drift-duration, 6s) ease-in-out infinite;
+  animation-delay: var(--drift-delay, 0s);
+}
+
+/* ---- Festival-specific hero animation (components/HeroAnimation.tsx) ---- */
+
+/* Diwali — a flickering diya flame. transform-box: fill-box makes an
+   SVG element's transform-origin relative to its own bounding box
+   (its base) instead of the SVG viewport, so it flickers in place
+   like a real flame rather than swinging around the canvas center. */
+@keyframes flame-flicker {
+  0%,
+  100% {
+    transform: scaleY(1) scaleX(1) rotate(0deg);
+  }
+  20% {
+    transform: scaleY(1.1) scaleX(0.94) rotate(-2deg);
+  }
+  45% {
+    transform: scaleY(0.9) scaleX(1.06) rotate(2deg);
+  }
+  70% {
+    transform: scaleY(1.06) scaleX(0.96) rotate(-1.5deg);
+  }
+  85% {
+    transform: scaleY(0.96) scaleX(1.02) rotate(1deg);
+  }
+}
+.animate-flame {
+  animation: flame-flicker 2.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+
+/* Soft breathing glow — used behind the diya flame and the trishul. */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.15);
+  }
+}
+.animate-glow-pulse {
+  animation: glow-pulse 2.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+/* Navratri — a slower, more solemn divine pulse behind the trishul. */
+@keyframes divine-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.12);
+  }
+}
+.animate-divine-pulse {
+  animation: divine-pulse 3s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+@keyframes gentle-sway {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+.animate-gentle-sway {
+  animation: gentle-sway 4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+
+/* Holi — gulal bursting outward and drifting up, per-particle angle
+   (--angle) and travel distance (--dist) set inline so one keyframe
+   drives a whole radial burst of differently-aimed particles. */
+@keyframes color-burst {
+  0% {
+    transform: rotate(var(--angle, 0deg)) translateX(0) translateY(0) scale(0.4);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: rotate(var(--angle, 0deg)) translateX(var(--dist, 60px)) translateY(-14px) scale(1);
+    opacity: 0;
+  }
+}
+.animate-color-burst {
+  animation: color-burst var(--burst-duration, 2.6s) ease-out infinite;
+  animation-delay: var(--burst-delay, 0s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-section,
+  .press-feedback,
+  .hover-glow,
+  .festival-fade-in,
+  .float-drift,
+  .animate-flame,
+  .animate-glow-pulse,
+  .animate-divine-pulse,
+  .animate-gentle-sway,
+  .animate-color-burst {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Subtle mandala line-art texture, used as a faint repeating background
+   on select sections. Kept very low-opacity so it reads as texture,
+   not decoration competing with content. Colors follow the active
+   festival's primary/accent CSS vars. */
+.mandala-texture {
+  background-image: radial-gradient(
+      circle,
+      rgb(var(--color-primary-500) / 0.06) 1px,
+      transparent 1px
+    ),
+    radial-gradient(circle, rgb(var(--color-accent-500) / 0.08) 1px, transparent 1px);
+  background-size: 28px 28px, 28px 28px;
+  background-position: 0 0, 14px 14px;
+}
+
+/* Smooth scrolling for anchor-link navigation from the sticky navbar. */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Plain-prose spacing for the legal pages (Terms/Privacy/Refund —
+   components/legal/LegalPageShell.tsx) — no typography plugin
+   installed, so headings/lists/paragraphs need explicit rules here
+   instead of relying on default browser margins alone. */
+.legal-content h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: #7a1f2b;
+  margin-top: 2rem;
+}
+.legal-content h2:first-child {
+  margin-top: 0;
+}
+.legal-content ul,
+.legal-content ol {
+  list-style: disc;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+.legal-content ol {
+  list-style: decimal;
+}
+.legal-content strong {
+  color: #7a1f2b;
+}
+.legal-content .legal-note {
+  border: 1px dashed rgb(212 160 23 / 0.6);
+  background: rgb(212 160 23 / 0.08);
+  border-radius: 0.75rem;
+  padding: 0.875rem 1rem;
+  font-size: 0.8125rem;
+  color: #7a1f2b;
+}

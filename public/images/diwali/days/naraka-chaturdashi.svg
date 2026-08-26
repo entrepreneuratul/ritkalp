@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="grad" cx="42%" cy="32%" r="78%">
+      <stop offset="0%" stop-color="#EF9A49"/>
+      <stop offset="60%" stop-color="#7A3308"/>
+      <stop offset="100%" stop-color="#7A3308"/>
+    </radialGradient>
+    <radialGradient id="vign" cx="50%" cy="50%" r="72%">
+      <stop offset="70%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.28"/>
+    </radialGradient>
+    <radialGradient id="diya2bowl" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#F5C97A" stop-opacity="1"/><stop offset="55%" stop-color="#C9862E" stop-opacity="1"/><stop offset="100%" stop-color="#7A4B12" stop-opacity="1"/></radialGradient><radialGradient id="diya2flame" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#FFFDE7" stop-opacity="1"/><stop offset="35%" stop-color="#FFC24B" stop-opacity="1"/><stop offset="70%" stop-color="#F2711F" stop-opacity="0.95"/><stop offset="100%" stop-color="#B4270C" stop-opacity="0"/></radialGradient><filter id="glow3" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+  </defs>
+  <circle cx="250" cy="250" r="250" fill="url(#grad)"/>
+  <circle cx="250" cy="250" r="250" fill="url(#vign)"/>
+  <circle cx="250" cy="250" r="237" fill="none" stroke="#6B2FA0" stroke-width="2" stroke-dasharray="3 7" opacity="0.85"/>
+  <circle cx="250" cy="250" r="222" fill="none" stroke="#6B2FA0" stroke-width="1" opacity="0.55"/>
+  <circle cx="250" cy="250" r="205" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.15"/>
+  <g transform="translate(250,222) scale(1.15)">
+    
+    <ellipse cx="0" cy="58" rx="46" ry="8" fill="#000" opacity="0.14"/>
+    <circle cx="0" cy="-18" r="34" fill="#FFC24B" opacity="0.35" filter="url(#glow3)"/>
+    <path d="M-48,18 Q0,66 48,18 Q46,10 40,8 Q0,26 -40,8 Q-46,10 -48,18 Z" fill="url(#diya2bowl)"/>
+    <ellipse cx="0" cy="16" rx="48" ry="12" fill="url(#diya2bowl)"/>
+    <ellipse cx="0" cy="14" rx="48" ry="11" fill="none" stroke="#FBE5B8" stroke-width="1.5" opacity="0.7"/>
+    <path d="M-16,4 Q0,-2 16,4" stroke="#FFEFC7" stroke-width="2" fill="none" opacity="0.8"/>
+    <path d="M0,10 C10,-16 -6,-30 0,-52 C6,-30 -10,-16 0,10 Z" fill="url(#diya2flame)"/>
+    <path d="M0,2 C5,-10 -3,-20 0,-34 C3,-20 -5,-10 0,2 Z" fill="#FFFDE7" opacity="0.9"/>
+    <line x1="0" y1="6" x2="0" y2="-4" stroke="#4A2E0E" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <text x="250" y="466" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#FFF8ED" font-weight="600">नरक चतुर्दशी</text>
+</svg>

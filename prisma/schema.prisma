@@ -1,0 +1,302 @@
+// =====================================================================
+// PRISMA SCHEMA — Ritkalp e-commerce backend
+//
+// Scope note: only genuinely commercial data lives here — kits/day-kits/
+// builder extras (pricing, items, stock) and orders/customers. Editorial
+// content (theme colors, hero copy, the 9-day significance/vidhi/mantra
+// text, About page) intentionally stays in lib/festivals/*.ts — it's not
+// something an order-management admin panel should be editing.
+//
+// Local dev connects to a local Postgres (see .env); production points
+// the same schema at a managed Postgres (Neon) via the Vercel env var of
+// the same name — no code changes needed to switch.
+// =====================================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------
+// Catalog — replaces the purchasable parts of lib/festivals/*.ts
+// (kits.items, the auto-built day-kits, builder.categories) so the admin
+// panel can edit them without a code deploy.
+// ---------------------------------------------------------------------
+
+enum KitKind {
+  CURATED // a hand-curated "Shop Kits" entry (was FestivalConfig.kits.items)
+  DAY // an auto-built "Day N samagri" kit (was catalog.ts:buildDayKits)
+}
+
+model Kit {
+  id           String   @id @default(cuid())
+  festivalSlug String
+  kind         KitKind
+  /// Which day of that festival's guide this DAY kit belongs to (null for CURATED).
+  dayNumber    Int?
+  name         String
+  description  String
+  image        String
+  /// Mirrored from Inventoryfy (its own bundle price — a kit's price is
+  /// NOT derived by summing its components, same as before) — updated
+  /// only by the inventory webhook, never by the admin form anymore.
+  /// Inventoryfy is canonical on price (see inventoryfySku below).
+  price        Int
+  /// Mirrored from Inventoryfy: the kit's real sellable count right now,
+  /// computed there from its components' actual stock
+  /// (min(componentStock ÷ qty needed) — see Inventoryfy's
+  /// computeBundleAvailableStock). "In stock" is just `stock > 0`.
+  stock        Int      @default(0)
+  featured     Boolean  @default(false)
+  badge        String?
+  /// Drafted/placeholder content the owner should review — same meaning
+  /// as the old KitItem.draft.
+  draft        Boolean  @default(false)
+  sortOrder    Int      @default(0)
+  /// The Inventoryfy bundle Product's SKU this Kit maps to — one real
+  /// SKU per Kit, created once by scripts/sync-inventoryfy.ts. Null only
+  /// transiently before that script has run for a newly-added kit.
+  inventoryfySku String? @unique
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  /// What's actually inside this kit — see Item/KitLineItem below.
+  /// Replaces the old flat `items: String[]` text list. Also mirrors
+  /// Inventoryfy's BundleComponent rows for the same kit 1:1.
+  lineItems  KitLineItem[]
+  orderItems OrderItem[]
+
+  @@index([festivalSlug])
+}
+
+/// A single reusable samagri item (कलश, नारियल, लाल कपड़ा, ...) — one row
+/// per distinct item *per festival*, shared across every kit that
+/// includes it. Replaces Kit's old flat `items: String[]` text list, so
+/// the same physical item isn't retyped in six different kits and (if
+/// ever needed) can carry its own price/stock independent of any one
+/// kit's price.
+model Item {
+  id           String   @id @default(cuid())
+  festivalSlug String
+  name         String
+  /// Mirrored from Inventoryfy — every Item now maps to a real
+  /// Inventoryfy Product/Variant (Item-level stock tracking), so this is
+  /// always populated once scripts/sync-inventoryfy.ts has run, even
+  /// though most items are only ever bought as part of a Kit rather than
+  /// standalone.
+  price        Int?
+  /// Real quantity, mirrored from Inventoryfy via webhook — this is what
+  /// Kit.stock and BuilderExtraItem availability are ultimately derived
+  /// from on the Inventoryfy side, since Items are the actual physical
+  /// units (कलश, नारियल, ...) shared across kits.
+  stock        Int      @default(0)
+  /// The Inventoryfy Product/Variant SKU this Item maps to. One real SKU
+  /// per distinct (festivalSlug, name) — matching this model's existing
+  /// dedup key exactly, so the same physical item shared across several
+  /// kits is genuinely one Inventoryfy SKU, one real stock count, not
+  /// duplicated per kit.
+  inventoryfySku String? @unique
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  kitLineItems KitLineItem[]
+
+  @@unique([festivalSlug, name])
+  @@index([festivalSlug])
+}
+
+/// Join row: "this Kit includes this Item, this many of it." The
+/// quantity/sortOrder live here (per kit), not on Item, since the same
+/// item can appear in different quantities across different kits.
+model KitLineItem {
+  id        String @id @default(cuid())
+  kitId     String
+  kit       Kit    @relation(fields: [kitId], references: [id], onDelete: Cascade)
+  itemId    String
+  item      Item   @relation(fields: [itemId], references: [id])
+  quantity  Int    @default(1)
+  sortOrder Int    @default(0)
+
+  @@unique([kitId, itemId])
+  @@index([kitId])
+}
+
+model BuilderExtraCategory {
+  id           String @id @default(cuid())
+  festivalSlug String
+  /// Stable key, e.g. "flowers" — matches the old BuilderExtraCategory.id.
+  categoryKey  String
+  label        String
+  sortOrder    Int    @default(0)
+
+  items BuilderExtraItem[]
+
+  @@unique([festivalSlug, categoryKey])
+  @@index([festivalSlug])
+}
+
+model BuilderExtraItem {
+  id         String               @id @default(cuid())
+  categoryId String
+  category   BuilderExtraCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  /// Stable key, e.g. "loose-flowers" — matches the old BuilderExtraItem.id.
+  itemKey    String
+  name       String
+  /// One of the PujaItemIconKey values from lib/festivals/types.ts.
+  icon       String
+  /// Mirrored from Inventoryfy — canonical price lives there now.
+  price      Int
+  /// Mirrored from Inventoryfy via webhook. "In stock" is `stock > 0`.
+  stock      Int     @default(0)
+  /// The Inventoryfy Product/Variant SKU this extra maps to — a plain
+  /// (non-bundle) product, one per BuilderExtraItem.
+  inventoryfySku String? @unique
+  sortOrder  Int     @default(0)
+
+  @@unique([categoryId, itemKey])
+}
+
+// ---------------------------------------------------------------------
+// Customers — accounts are OPTIONAL. Guest checkout never requires one;
+// an Order carries its own contact/address snapshot regardless, and
+// customerId is only set when the shopper was logged in (or later
+// creates an account and "claims" past orders by matching email/phone —
+// that claiming flow is a fast follow, not part of this build).
+// ---------------------------------------------------------------------
+
+model Customer {
+  id           String   @id @default(cuid())
+  name         String?
+  email        String?  @unique
+  phone        String?  @unique
+  passwordHash String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  addresses Address[]
+  orders    Order[]
+}
+
+model Address {
+  id         String   @id @default(cuid())
+  customerId String
+  customer   Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  label      String? // "Home" / "Work", optional
+  line       String
+  city       String
+  state      String
+  pincode    String
+  isDefault  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+}
+
+// ---------------------------------------------------------------------
+// Orders
+// ---------------------------------------------------------------------
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PACKED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  UNPAID
+  PAID
+  FAILED
+  REFUNDED
+}
+
+enum OrderSource {
+  ONLINE_PAYMENT
+  WHATSAPP
+}
+
+model Order {
+  id         String    @id @default(cuid())
+  customerId String?
+  customer   Customer? @relation(fields: [customerId], references: [id])
+
+  // Contact + delivery snapshot — always present, even for guests /
+  // regardless of whether customerId is set (same fields the existing
+  // checkout form in components/CartDrawer.tsx already collects).
+  guestName    String
+  guestPhone   String
+  guestEmail   String?
+  addressLine  String
+  city         String
+  state        String
+  pincode      String
+
+  items OrderItem[]
+
+  subtotal Int
+  total    Int
+
+  status        OrderStatus   @default(PENDING)
+  paymentStatus PaymentStatus @default(UNPAID)
+  source        OrderSource
+
+  razorpayOrderId   String? @unique
+  razorpayPaymentId String? @unique
+  razorpaySignature String?
+
+  /// The real Inventoryfy order that actually decremented stock for this
+  /// order — set by createOrderFromCart() after Inventoryfy accepts the
+  /// order, before this row is even created (see lib/orders.ts). Null
+  /// only for an order created before this integration existed.
+  inventoryfyOrderId String? @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([customerId])
+  @@index([status])
+}
+
+model OrderItem {
+  id      String @id @default(cuid())
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  kitId String?
+  kit   Kit?    @relation(fields: [kitId], references: [id])
+
+  /// Every field below is a SNAPSHOT at order time (name/price/items can
+  /// change later in the catalog — the order must keep showing what the
+  /// customer actually bought).
+  festivalSlug String
+  name         String
+  image        String
+  itemsList    String[]
+  unitPrice    Int
+  quantity     Int
+}
+
+// ---------------------------------------------------------------------
+// Admin panel accounts — separate from Customer; role-gated in
+// middleware.ts. Not linked to NextAuth's own adapter tables since auth
+// uses the JWT session strategy (see lib/auth.ts) — no Account/Session/
+// VerificationToken tables needed for Credentials-only login.
+// ---------------------------------------------------------------------
+
+enum AdminRole {
+  OWNER
+  STAFF
+}
+
+model Admin {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  name         String?
+  role         AdminRole @default(STAFF)
+  createdAt    DateTime  @default(now())
+}

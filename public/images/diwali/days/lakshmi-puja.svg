@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="grad" cx="42%" cy="32%" r="78%">
+      <stop offset="0%" stop-color="#EF9A49"/>
+      <stop offset="60%" stop-color="#7A3308"/>
+      <stop offset="100%" stop-color="#7A3308"/>
+    </radialGradient>
+    <radialGradient id="vign" cx="50%" cy="50%" r="72%">
+      <stop offset="70%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.28"/>
+    </radialGradient>
+    <linearGradient id="lotus4petal" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F4E0FF" stop-opacity="1"/><stop offset="55%" stop-color="#B67CE0" stop-opacity="1"/><stop offset="100%" stop-color="#6B2FA0" stop-opacity="1"/></linearGradient><linearGradient id="lotus4petalBack" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E7CBF6" stop-opacity="1"/><stop offset="100%" stop-color="#8B47BD" stop-opacity="1"/></linearGradient><radialGradient id="lotus4center" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#FFF6D8" stop-opacity="1"/><stop offset="60%" stop-color="#F2B705" stop-opacity="1"/><stop offset="100%" stop-color="#C48A02" stop-opacity="1"/></radialGradient><filter id="lotus4glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+  <circle cx="250" cy="250" r="250" fill="url(#grad)"/>
+  <circle cx="250" cy="250" r="250" fill="url(#vign)"/>
+  <circle cx="250" cy="250" r="237" fill="none" stroke="#6B2FA0" stroke-width="2" stroke-dasharray="3 7" opacity="0.85"/>
+  <circle cx="250" cy="250" r="222" fill="none" stroke="#6B2FA0" stroke-width="1" opacity="0.55"/>
+  <circle cx="250" cy="250" r="205" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.15"/>
+  <g transform="translate(250,222) scale(1.15)">
+    
+    <ellipse cx="0" cy="66" rx="50" ry="9" fill="#000" opacity="0.1"/>
+    <circle cx="0" cy="0" r="46" fill="#F2B705" opacity="0.25" filter="url(#lotus4glow)"/>
+    <ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus4petalBack)" opacity="0.85" transform="rotate(22.5)"/><ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus4petalBack)" opacity="0.85" transform="rotate(67.5)"/><ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus4petalBack)" opacity="0.85" transform="rotate(112.5)"/><ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus4petalBack)" opacity="0.85" transform="rotate(157.5)"/><ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus4petalBack)" opacity="0.85" transform="rotate(202.5)"/><ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus4petalBack)" opacity="0.85" transform="rotate(247.5)"/><ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus4petalBack)" opacity="0.85" transform="rotate(292.5)"/><ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus4petalBack)" opacity="0.85" transform="rotate(337.5)"/>
+    <ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus4petal)" transform="rotate(0)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(0)"/><ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus4petal)" transform="rotate(45)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(45)"/><ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus4petal)" transform="rotate(90)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(90)"/><ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus4petal)" transform="rotate(135)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(135)"/><ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus4petal)" transform="rotate(180)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(180)"/><ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus4petal)" transform="rotate(225)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(225)"/><ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus4petal)" transform="rotate(270)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(270)"/><ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus4petal)" transform="rotate(315)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(315)"/>
+    <circle cx="0" cy="0" r="17" fill="url(#lotus4center)"/>
+    <circle cx="0" cy="0" r="17" fill="none" stroke="#8A5F17" stroke-width="1" opacity="0.4"/>
+  </g>
+  <text x="250" y="466" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#FFF8ED" font-weight="600">लक्ष्मी पूजा</text>
+</svg>

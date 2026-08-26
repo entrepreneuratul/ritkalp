@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EF9A49"/>
+      <stop offset="100%" stop-color="#FBE0C4"/>
+    </linearGradient>
+    <radialGradient id="spot" cx="50%" cy="38%" r="55%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="diya13bowl" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#F5C97A" stop-opacity="1"/><stop offset="55%" stop-color="#C9862E" stop-opacity="1"/><stop offset="100%" stop-color="#7A4B12" stop-opacity="1"/></radialGradient><radialGradient id="diya13flame" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#FFFDE7" stop-opacity="1"/><stop offset="35%" stop-color="#FFC24B" stop-opacity="1"/><stop offset="70%" stop-color="#F2711F" stop-opacity="0.95"/><stop offset="100%" stop-color="#B4270C" stop-opacity="0"/></radialGradient><filter id="glow14" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter><radialGradient id="splash15c0" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#F2B705" stop-opacity="1"/><stop offset="70%" stop-color="#C48A02" stop-opacity="1"/><stop offset="100%" stop-color="#C48A02" stop-opacity="0"/></radialGradient><radialGradient id="splash15c1" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#4C9A4A" stop-opacity="1"/><stop offset="70%" stop-color="#2C5D2C" stop-opacity="1"/><stop offset="100%" stop-color="#2C5D2C" stop-opacity="0"/></radialGradient><radialGradient id="splash15c2" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#3B82C4" stop-opacity="1"/><stop offset="70%" stop-color="#1E4E78" stop-opacity="1"/><stop offset="100%" stop-color="#1E4E78" stop-opacity="0"/></radialGradient><radialGradient id="splash15c3" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#D6316C" stop-opacity="1"/><stop offset="70%" stop-color="#841D43" stop-opacity="1"/><stop offset="100%" stop-color="#841D43" stop-opacity="0"/></radialGradient><filter id="splash15glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#spot)"/>
+  <g stroke="#7A3308" stroke-width="1.5" fill="none" opacity="0.28">
+    <circle cx="400" cy="225" r="170" stroke-dasharray="4 7"/>
+    <circle cx="400" cy="225" r="136"/>
+  </g>
+  <g transform="translate(400,228) scale(1.0)">
+    <g transform="translate(-70,30) scale(0.7)">
+    <ellipse cx="0" cy="58" rx="46" ry="8" fill="#000" opacity="0.14"/>
+    <circle cx="0" cy="-18" r="34" fill="#FFC24B" opacity="0.35" filter="url(#glow14)"/>
+    <path d="M-48,18 Q0,66 48,18 Q46,10 40,8 Q0,26 -40,8 Q-46,10 -48,18 Z" fill="url(#diya13bowl)"/>
+    <ellipse cx="0" cy="16" rx="48" ry="12" fill="url(#diya13bowl)"/>
+    <ellipse cx="0" cy="14" rx="48" ry="11" fill="none" stroke="#FBE5B8" stroke-width="1.5" opacity="0.7"/>
+    <path d="M-16,4 Q0,-2 16,4" stroke="#FFEFC7" stroke-width="2" fill="none" opacity="0.8"/>
+    <path d="M0,10 C10,-16 -6,-30 0,-52 C6,-30 -10,-16 0,10 Z" fill="url(#diya13flame)"/>
+    <path d="M0,2 C5,-10 -3,-20 0,-34 C3,-20 -5,-10 0,2 Z" fill="#FFFDE7" opacity="0.9"/>
+    <line x1="0" y1="6" x2="0" y2="-4" stroke="#4A2E0E" stroke-width="2" stroke-linecap="round"/></g>
+    <g transform="translate(75,-10) scale(0.55)">
+    <circle cx="0" cy="0" r="50" fill="#D6316C" opacity="0.2" filter="url(#splash15glow)"/>
+    <path d="M23.0,0.0 Q46.0,0.0 69.0,0.0" stroke="url(#splash15c0)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><path d="M14.3,18.0 Q28.7,36.0 43.0,53.9" stroke="url(#splash15c2)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><path d="M-5.1,22.4 Q-10.2,44.8 -15.4,67.3" stroke="url(#splash15c0)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><path d="M-20.7,10.0 Q-41.4,20.0 -62.2,29.9" stroke="url(#splash15c2)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><path d="M-20.7,-10.0 Q-41.4,-20.0 -62.2,-29.9" stroke="url(#splash15c0)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><path d="M-5.1,-22.4 Q-10.2,-44.8 -15.4,-67.3" stroke="url(#splash15c2)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><path d="M14.3,-18.0 Q28.7,-36.0 43.0,-53.9" stroke="url(#splash15c0)" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/>
+    <circle cx="46.0" cy="0.0" r="8" fill="url(#splash15c0)"/><circle cx="30.6" cy="14.8" r="5.5" fill="url(#splash15c1)"/><circle cx="28.7" cy="36.0" r="5.5" fill="url(#splash15c2)"/><circle cx="7.6" cy="33.1" r="8" fill="url(#splash15c3)"/><circle cx="-10.2" cy="44.8" r="5.5" fill="url(#splash15c0)"/><circle cx="-21.2" cy="26.6" r="5.5" fill="url(#splash15c1)"/><circle cx="-41.4" cy="20.0" r="8" fill="url(#splash15c2)"/><circle cx="-34.0" cy="0.0" r="5.5" fill="url(#splash15c3)"/><circle cx="-41.4" cy="-20.0" r="5.5" fill="url(#splash15c0)"/><circle cx="-21.2" cy="-26.6" r="8" fill="url(#splash15c1)"/><circle cx="-10.2" cy="-44.8" r="5.5" fill="url(#splash15c2)"/><circle cx="7.6" cy="-33.1" r="5.5" fill="url(#splash15c3)"/><circle cx="28.7" cy="-36.0" r="8" fill="url(#splash15c0)"/><circle cx="30.6" cy="-14.8" r="5.5" fill="url(#splash15c1)"/>
+    <circle cx="0" cy="0" r="20" fill="url(#splash15c0)"/>
+    <circle cx="0" cy="0" r="20" fill="none" stroke="#FFF6D8" stroke-width="1.5" opacity="0.6"/></g>
+  </g>
+  <rect x="0" y="500" width="800" height="100" fill="#7A3308" opacity="0.94"/>
+  <rect x="0" y="500" width="800" height="3" fill="#7A3308"/>
+  <text x="400" y="558" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="32" fill="#FFF8ED" font-weight="600">Diya &amp; Rangoli Decor Kit</text>
+</svg>

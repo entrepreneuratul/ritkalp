@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="grad" cx="42%" cy="32%" r="78%">
+      <stop offset="0%" stop-color="#EF9A49"/>
+      <stop offset="60%" stop-color="#7A3308"/>
+      <stop offset="100%" stop-color="#7A3308"/>
+    </radialGradient>
+    <radialGradient id="vign" cx="50%" cy="50%" r="72%">
+      <stop offset="70%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.28"/>
+    </radialGradient>
+    <linearGradient id="mtn5back" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C9A6E8" stop-opacity="1"/><stop offset="100%" stop-color="#6B2FA0" stop-opacity="1"/></linearGradient><linearGradient id="mtn5front" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8B47BD" stop-opacity="1"/><stop offset="100%" stop-color="#3F1B60" stop-opacity="1"/></linearGradient><radialGradient id="mtn5sun" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#FFF6D8" stop-opacity="1"/><stop offset="50%" stop-color="#F2B705" stop-opacity="1"/><stop offset="100%" stop-color="#F2B705" stop-opacity="0"/></radialGradient><filter id="mtn5glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+  <circle cx="250" cy="250" r="250" fill="url(#grad)"/>
+  <circle cx="250" cy="250" r="250" fill="url(#vign)"/>
+  <circle cx="250" cy="250" r="237" fill="none" stroke="#6B2FA0" stroke-width="2" stroke-dasharray="3 7" opacity="0.85"/>
+  <circle cx="250" cy="250" r="222" fill="none" stroke="#6B2FA0" stroke-width="1" opacity="0.55"/>
+  <circle cx="250" cy="250" r="205" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.15"/>
+  <g transform="translate(250,222) scale(1.15)">
+    
+    <ellipse cx="0" cy="62" rx="88" ry="10" fill="#000" opacity="0.12"/>
+    <circle cx="34" cy="-62" r="30" fill="url(#mtn5sun)" filter="url(#mtn5glow)"/>
+    <circle cx="34" cy="-62" r="15" fill="url(#mtn5sun)"/>
+    <path d="M-88,50 L-42,-18 L-16,10 L14,-42 L46,-4 L88,50 Z" fill="url(#mtn5back)" opacity="0.85"/>
+    <path d="M-70,52 L-28,-34 L2,-2 L28,-56 L88,52 Z" fill="url(#mtn5front)"/>
+    <path d="M28,-56 L38,-44 L20,-38 Z" fill="#FFFFFF" opacity="0.55"/>
+    <path d="M-28,-34 L-20,-24 L-36,-18 Z" fill="#FFFFFF" opacity="0.4"/>
+    <g opacity="0.55" fill="#FFFFFF">
+      <ellipse cx="-58" cy="-70" rx="16" ry="6"/>
+      <ellipse cx="-46" cy="-74" rx="11" ry="5"/>
+      <ellipse cx="60" cy="-30" rx="14" ry="5"/>
+    </g>
+  </g>
+  <text x="250" y="466" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#FFF8ED" font-weight="600">गोवर्धन पूजा</text>
+</svg>

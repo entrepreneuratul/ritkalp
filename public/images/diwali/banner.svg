@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1600" height="620" viewBox="0 0 1600 620" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bandVign" cx="40%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.22"/>
+    </radialGradient>
+    <radialGradient id="coin19face" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#FFF4C2" stop-opacity="1"/><stop offset="45%" stop-color="#E9BE4D" stop-opacity="1"/><stop offset="80%" stop-color="#B9862A" stop-opacity="1"/><stop offset="100%" stop-color="#8A5F17" stop-opacity="1"/></radialGradient><radialGradient id="coin19face2" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#FFF9DE" stop-opacity="1"/><stop offset="45%" stop-color="#F0C866" stop-opacity="1"/><stop offset="80%" stop-color="#C4922F" stop-opacity="1"/><stop offset="100%" stop-color="#8A5F17" stop-opacity="1"/></radialGradient><radialGradient id="diya20bowl" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#F5C97A" stop-opacity="1"/><stop offset="55%" stop-color="#C9862E" stop-opacity="1"/><stop offset="100%" stop-color="#7A4B12" stop-opacity="1"/></radialGradient><radialGradient id="diya20flame" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#FFFDE7" stop-opacity="1"/><stop offset="35%" stop-color="#FFC24B" stop-opacity="1"/><stop offset="70%" stop-color="#F2711F" stop-opacity="0.95"/><stop offset="100%" stop-color="#B4270C" stop-opacity="0"/></radialGradient><filter id="glow21" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter><linearGradient id="lotus22petal" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F4E0FF" stop-opacity="1"/><stop offset="55%" stop-color="#B67CE0" stop-opacity="1"/><stop offset="100%" stop-color="#6B2FA0" stop-opacity="1"/></linearGradient><linearGradient id="lotus22petalBack" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#E7CBF6" stop-opacity="1"/><stop offset="100%" stop-color="#8B47BD" stop-opacity="1"/></linearGradient><radialGradient id="lotus22center" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#FFF6D8" stop-opacity="1"/><stop offset="60%" stop-color="#F2B705" stop-opacity="1"/><stop offset="100%" stop-color="#C48A02" stop-opacity="1"/></radialGradient><filter id="lotus22glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter><linearGradient id="mtn23back" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C9A6E8" stop-opacity="1"/><stop offset="100%" stop-color="#6B2FA0" stop-opacity="1"/></linearGradient><linearGradient id="mtn23front" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8B47BD" stop-opacity="1"/><stop offset="100%" stop-color="#3F1B60" stop-opacity="1"/></linearGradient><radialGradient id="mtn23sun" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#FFF6D8" stop-opacity="1"/><stop offset="50%" stop-color="#F2B705" stop-opacity="1"/><stop offset="100%" stop-color="#F2B705" stop-opacity="0"/></radialGradient><filter id="mtn23glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter><radialGradient id="tilak24mark" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#F5A0C1" stop-opacity="1"/><stop offset="55%" stop-color="#D6316C" stop-opacity="1"/><stop offset="100%" stop-color="#841D43" stop-opacity="1"/></radialGradient><filter id="tilak24glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="620" fill="#FFF8ED"/>
+  <rect width="1600" height="620" fill="#FBE0C4" opacity="0.35"/>
+  <g transform="translate(267,280)">
+      <circle r="150" fill="#7A3308"/>
+      <circle r="150" fill="url(#bandVign)"/>
+      <circle r="140" fill="none" stroke="#6B2FA0" stroke-width="2" stroke-dasharray="3 6" opacity="0.8"/>
+      <g transform="scale(1.15)">
+    <ellipse cx="-13" cy="18" rx="42" ry="10" fill="#000" opacity="0.12"/>
+    <circle cx="-14" cy="10" r="38" fill="url(#coin19face)"/>
+    <circle cx="-14" cy="10" r="38" fill="none" stroke="#7A5312" stroke-width="1.5" opacity="0.5"/>
+    <circle cx="18" cy="-8" r="38" fill="url(#coin19face2)"/>
+    <circle cx="18" cy="-8" r="38" fill="none" stroke="#8A5F17" stroke-width="2"/>
+    <circle cx="18" cy="-8" r="27" fill="none" stroke="#FFF4C2" stroke-width="1.5" stroke-dasharray="2 4" opacity="0.75"/>
+    <circle cx="18" cy="-8" r="19" fill="none" stroke="#B9862A" stroke-width="1" opacity="0.6"/>
+    <text x="18" y="1" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#7A5312" font-weight="700">₹</text>
+    <path d="M2,-30 A34,34 0 0 1 34,-16" stroke="#FFFDF0" stroke-width="3" fill="none" opacity="0.8" stroke-linecap="round"/></g>
+      <text x="0" y="200" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#7A3308" font-weight="600">धनतेरस</text>
+    </g><g transform="translate(533,280)">
+      <circle r="150" fill="#7A3308"/>
+      <circle r="150" fill="url(#bandVign)"/>
+      <circle r="140" fill="none" stroke="#6B2FA0" stroke-width="2" stroke-dasharray="3 6" opacity="0.8"/>
+      <g transform="scale(1.15)">
+    <ellipse cx="0" cy="58" rx="46" ry="8" fill="#000" opacity="0.14"/>
+    <circle cx="0" cy="-18" r="34" fill="#FFC24B" opacity="0.35" filter="url(#glow21)"/>
+    <path d="M-48,18 Q0,66 48,18 Q46,10 40,8 Q0,26 -40,8 Q-46,10 -48,18 Z" fill="url(#diya20bowl)"/>
+    <ellipse cx="0" cy="16" rx="48" ry="12" fill="url(#diya20bowl)"/>
+    <ellipse cx="0" cy="14" rx="48" ry="11" fill="none" stroke="#FBE5B8" stroke-width="1.5" opacity="0.7"/>
+    <path d="M-16,4 Q0,-2 16,4" stroke="#FFEFC7" stroke-width="2" fill="none" opacity="0.8"/>
+    <path d="M0,10 C10,-16 -6,-30 0,-52 C6,-30 -10,-16 0,10 Z" fill="url(#diya20flame)"/>
+    <path d="M0,2 C5,-10 -3,-20 0,-34 C3,-20 -5,-10 0,2 Z" fill="#FFFDE7" opacity="0.9"/>
+    <line x1="0" y1="6" x2="0" y2="-4" stroke="#4A2E0E" stroke-width="2" stroke-linecap="round"/></g>
+      <text x="0" y="200" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#7A3308" font-weight="600">नरक चतुर्दशी</text>
+    </g><g transform="translate(800,280)">
+      <circle r="150" fill="#7A3308"/>
+      <circle r="150" fill="url(#bandVign)"/>
+      <circle r="140" fill="none" stroke="#6B2FA0" stroke-width="2" stroke-dasharray="3 6" opacity="0.8"/>
+      <g transform="scale(1.15)">
+    <ellipse cx="0" cy="66" rx="50" ry="9" fill="#000" opacity="0.1"/>
+    <circle cx="0" cy="0" r="46" fill="#F2B705" opacity="0.25" filter="url(#lotus22glow)"/>
+    <ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus22petalBack)" opacity="0.85" transform="rotate(22.5)"/><ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus22petalBack)" opacity="0.85" transform="rotate(67.5)"/><ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus22petalBack)" opacity="0.85" transform="rotate(112.5)"/><ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus22petalBack)" opacity="0.85" transform="rotate(157.5)"/><ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus22petalBack)" opacity="0.85" transform="rotate(202.5)"/><ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus22petalBack)" opacity="0.85" transform="rotate(247.5)"/><ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus22petalBack)" opacity="0.85" transform="rotate(292.5)"/><ellipse cx="0" cy="-46" rx="17" ry="34" fill="url(#lotus22petalBack)" opacity="0.85" transform="rotate(337.5)"/>
+    <ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus22petal)" transform="rotate(0)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(0)"/><ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus22petal)" transform="rotate(45)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(45)"/><ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus22petal)" transform="rotate(90)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(90)"/><ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus22petal)" transform="rotate(135)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(135)"/><ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus22petal)" transform="rotate(180)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(180)"/><ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus22petal)" transform="rotate(225)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(225)"/><ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus22petal)" transform="rotate(270)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(270)"/><ellipse cx="0" cy="-40" rx="15" ry="30" fill="url(#lotus22petal)" transform="rotate(315)"/><line x1="0" y1="-14" x2="0" y2="-62" stroke="#FFFFFF" stroke-width="0.8" opacity="0.35" transform="rotate(315)"/>
+    <circle cx="0" cy="0" r="17" fill="url(#lotus22center)"/>
+    <circle cx="0" cy="0" r="17" fill="none" stroke="#8A5F17" stroke-width="1" opacity="0.4"/></g>
+      <text x="0" y="200" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#7A3308" font-weight="600">लक्ष्मी पूजा</text>
+    </g><g transform="translate(1067,280)">
+      <circle r="150" fill="#7A3308"/>
+      <circle r="150" fill="url(#bandVign)"/>
+      <circle r="140" fill="none" stroke="#6B2FA0" stroke-width="2" stroke-dasharray="3 6" opacity="0.8"/>
+      <g transform="scale(1.15)">
+    <ellipse cx="0" cy="62" rx="88" ry="10" fill="#000" opacity="0.12"/>
+    <circle cx="34" cy="-62" r="30" fill="url(#mtn23sun)" filter="url(#mtn23glow)"/>
+    <circle cx="34" cy="-62" r="15" fill="url(#mtn23sun)"/>
+    <path d="M-88,50 L-42,-18 L-16,10 L14,-42 L46,-4 L88,50 Z" fill="url(#mtn23back)" opacity="0.85"/>
+    <path d="M-70,52 L-28,-34 L2,-2 L28,-56 L88,52 Z" fill="url(#mtn23front)"/>
+    <path d="M28,-56 L38,-44 L20,-38 Z" fill="#FFFFFF" opacity="0.55"/>
+    <path d="M-28,-34 L-20,-24 L-36,-18 Z" fill="#FFFFFF" opacity="0.4"/>
+    <g opacity="0.55" fill="#FFFFFF">
+      <ellipse cx="-58" cy="-70" rx="16" ry="6"/>
+      <ellipse cx="-46" cy="-74" rx="11" ry="5"/>
+      <ellipse cx="60" cy="-30" rx="14" ry="5"/>
+    </g></g>
+      <text x="0" y="200" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#7A3308" font-weight="600">गोवर्धन पूजा</text>
+    </g><g transform="translate(1333,280)">
+      <circle r="150" fill="#7A3308"/>
+      <circle r="150" fill="url(#bandVign)"/>
+      <circle r="140" fill="none" stroke="#6B2FA0" stroke-width="2" stroke-dasharray="3 6" opacity="0.8"/>
+      <g transform="scale(1.15)">
+    <ellipse cx="0" cy="50" rx="40" ry="8" fill="#000" opacity="0.1"/>
+    <circle cx="0" cy="0" r="40" fill="#D6316C" opacity="0.2" filter="url(#tilak24glow)"/>
+    <path d="M-46,-26 Q0,-4 46,-26" stroke="#C4922F" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M-46,-26 Q0,-2 46,-26" stroke="#F0C866" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.8"/>
+    <path d="M-46,-26 Q-52,-38 -42,-48" stroke="#C4922F" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M46,-26 Q52,-38 42,-48" stroke="#C4922F" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <ellipse cx="0" cy="4" rx="17" ry="34" fill="url(#tilak24mark)"/>
+    <ellipse cx="-5" cy="-8" rx="4" ry="9" fill="#FFE1EC" opacity="0.7"/>
+    <g fill="#F5EBD8">
+      <ellipse cx="-30" cy="30" rx="5" ry="2.5" transform="rotate(-20 -30 30)"/>
+      <ellipse cx="-20" cy="40" rx="5" ry="2.5" transform="rotate(10 -20 40)"/>
+      <ellipse cx="26" cy="34" rx="5" ry="2.5" transform="rotate(25 26 34)"/>
+    </g></g>
+      <text x="0" y="200" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#7A3308" font-weight="600">भाई दूज</text>
+    </g>
+</svg>

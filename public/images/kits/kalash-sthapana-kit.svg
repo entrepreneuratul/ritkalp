@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FDF8F0"/>
+      <stop offset="100%" stop-color="#F3E7CF"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <g stroke="#AC8012" stroke-width="1.5" fill="none" opacity="0.3">
+    <circle cx="400" cy="230" r="165" stroke-dasharray="4 7"/>
+    <circle cx="400" cy="230" r="132"/>
+  </g>
+  <g transform="translate(400,230) scale(1.15)">
+    
+      <g transform="translate(-128,60)">
+  <g>
+    <ellipse cx="0" cy="40" rx="66" ry="20" fill="#6B4A2E"/>
+    <ellipse cx="0" cy="34" rx="66" ry="16" fill="#8A6440"/>
+    <path d="M-24,30 C-30,-8 -18,-32 -24,-56" stroke="#3F6B2E" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M-2,30 C-6,-14 6,-38 2,-66" stroke="#5C8A47" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M22,30 C28,-6 16,-30 24,-52" stroke="#3F6B2E" stroke-width="6" fill="none" stroke-linecap="round"/>
+  </g></g>
+      <g transform="translate(95,8)">
+  <g>
+    <!-- pot body -->
+    <path d="M-52,22 Q-52,85 0,95 Q52,85 52,22 Q52,-8 0,-8 Q-52,-8 -52,22 Z" fill="#AC8012"/>
+    <!-- neck -->
+    <rect x="-16" y="-32" width="32" height="26" rx="6" fill="#AC8012"/>
+    <ellipse cx="0" cy="-32" rx="20" ry="7" fill="#AC8012"/>
+    <path d="M-52,8 Q0,26 52,8" stroke="#B14956" stroke-width="10" fill="none" opacity="0.85"/>
+    <path d="M-50,-2 Q0,14 50,-2" stroke="#D4A017" stroke-width="4" fill="none"/>
+    <!-- coconut -->
+    <circle cx="0" cy="-54" r="26" fill="#7A4B2E"/>
+    <path d="M-9,-70 Q0,-78 9,-70" stroke="#FDF8F0" stroke-width="3" fill="none" opacity="0.7"/>
+    <path d="M-9,-62 Q0,-68 9,-62" stroke="#FDF8F0" stroke-width="2.5" fill="none" opacity="0.5"/>
+    <path d="M-28,-48 Q-58,-72 -76,-54 Q-52,-38 -28,-48Z" fill="#3F6B2E"/>
+    <path d="M28,-48 Q58,-72 76,-54 Q52,-38 28,-48Z" fill="#3F6B2E"/>
+    <path d="M-14,-62 Q-26,-90 -10,-100 Q2,-78 -14,-62Z" fill="#5C8A47"/>
+    <path d="M14,-62 Q26,-90 10,-100 Q-2,-78 14,-62Z" fill="#5C8A47"/>
+  </g></g>
+    
+  </g>
+  <rect x="0" y="500" width="800" height="100" fill="#AC8012" opacity="0.94"/>
+  <text x="400" y="558" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="34" fill="#FDF8F0" font-weight="600">Kalash Sthapana Kit</text>
+</svg>

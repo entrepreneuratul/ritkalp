@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FDF8F0"/>
+      <stop offset="100%" stop-color="#E3A5AB"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <g stroke="#671A24" stroke-width="1.5" fill="none" opacity="0.3">
+    <circle cx="400" cy="245" r="165" stroke-dasharray="4 7"/>
+    <circle cx="400" cy="245" r="132"/>
+  </g>
+  <g transform="translate(400,245) scale(1.4)">
+    
+  <g>
+    <path d="M-60,44 L-38,-12 L38,-12 L60,44 Z" fill="#8B5A2B"/>
+    <path d="M-44,38 L-27,0 L27,0 L44,38 Z" fill="#3D2412"/>
+    <path d="M0,-16 C17,-48 -9,-64 0,-96 C9,-64 -17,-48 0,-16 Z" fill="#D4A017"/>
+    <path d="M-22,-10 C-11,-32 -22,-43 -16,-58 C-5,-42 -13,-27 -22,-10 Z" fill="#E7BD56" opacity="0.9"/>
+    <path d="M22,-10 C11,-32 22,-43 16,-58 C5,-42 13,-27 22,-10 Z" fill="#E7BD56" opacity="0.9"/>
+  </g>
+  </g>
+  <rect x="0" y="500" width="800" height="100" fill="#671A24" opacity="0.94"/>
+  <text x="400" y="558" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="34" fill="#FDF8F0" font-weight="600">Ashtami-Navami Special Kit</text>
+</svg>

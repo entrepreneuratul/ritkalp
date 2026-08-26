@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="grad" cx="42%" cy="32%" r="78%">
+      <stop offset="0%" stop-color="#EE71A3"/>
+      <stop offset="60%" stop-color="#841D43"/>
+      <stop offset="100%" stop-color="#841D43"/>
+    </radialGradient>
+    <radialGradient id="vign" cx="50%" cy="50%" r="72%">
+      <stop offset="70%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.28"/>
+    </radialGradient>
+    <radialGradient id="fire25core" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#FFFCE0" stop-opacity="1"/><stop offset="35%" stop-color="#FFD24B" stop-opacity="1"/><stop offset="65%" stop-color="#F2711F" stop-opacity="1"/><stop offset="100%" stop-color="#8C1D0E" stop-opacity="1"/></radialGradient><radialGradient id="fire25side" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#FFE9A8" stop-opacity="1"/><stop offset="50%" stop-color="#F2A21F" stop-opacity="1"/><stop offset="100%" stop-color="#B4270C" stop-opacity="1"/></radialGradient><linearGradient id="fire25log" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8A5A2E" stop-opacity="1"/><stop offset="100%" stop-color="#4A2E12" stop-opacity="1"/></linearGradient><filter id="fire25glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+  <circle cx="250" cy="250" r="250" fill="url(#grad)"/>
+  <circle cx="250" cy="250" r="250" fill="url(#vign)"/>
+  <circle cx="250" cy="250" r="237" fill="none" stroke="#4C9A4A" stroke-width="2" stroke-dasharray="3 7" opacity="0.85"/>
+  <circle cx="250" cy="250" r="222" fill="none" stroke="#4C9A4A" stroke-width="1" opacity="0.55"/>
+  <circle cx="250" cy="250" r="205" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.15"/>
+  <g transform="translate(250,222) scale(1.15)">
+    
+    <ellipse cx="0" cy="52" rx="60" ry="10" fill="#000" opacity="0.16"/>
+    <circle cx="0" cy="-10" r="58" fill="#F2711F" opacity="0.28" filter="url(#fire25glow)"/>
+    <rect x="-42" y="30" width="84" height="15" rx="5" fill="url(#fire25log)"/>
+    <rect x="-30" y="12" width="64" height="15" rx="5" fill="url(#fire25log)" transform="rotate(9 0 20)"/>
+    <g stroke="#2E1B08" stroke-width="1" opacity="0.4">
+      <line x1="-30" y1="38" x2="30" y2="38"/>
+      <line x1="-24" y1="19" x2="30" y2="19"/>
+    </g>
+    <path d="M-30,14 C-22,-10 -38,-26 -28,-50 C-18,-30 -34,-16 -30,14 Z" fill="url(#fire25side)"/>
+    <path d="M30,14 C22,-10 38,-26 28,-50 C18,-30 34,-16 30,14 Z" fill="url(#fire25side)"/>
+    <path d="M0,10 C16,-22 -10,-46 0,-84 C11,-46 -16,-22 0,10 Z" fill="url(#fire25core)"/>
+    <path d="M0,-4 C8,-24 -5,-38 0,-60 C5,-38 -8,-24 0,-4 Z" fill="#FFFCE0" opacity="0.85"/>
+    <g fill="#FFC24B">
+      <circle cx="14" cy="-70" r="2.5" opacity="0.85"/>
+      <circle cx="-18" cy="-78" r="2" opacity="0.7"/>
+      <circle cx="6" cy="-92" r="1.6" opacity="0.55"/>
+    </g>
+  </g>
+  <text x="250" y="466" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#FFFBF2" font-weight="600">होलिका दहन</text>
+</svg>

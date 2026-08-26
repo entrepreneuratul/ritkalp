@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#EF9A49"/>
+      <stop offset="100%" stop-color="#FBE0C4"/>
+    </linearGradient>
+    <radialGradient id="spot" cx="50%" cy="38%" r="55%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mtn16back" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C9A6E8" stop-opacity="1"/><stop offset="100%" stop-color="#6B2FA0" stop-opacity="1"/></linearGradient><linearGradient id="mtn16front" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8B47BD" stop-opacity="1"/><stop offset="100%" stop-color="#3F1B60" stop-opacity="1"/></linearGradient><radialGradient id="mtn16sun" cx="35%" cy="30%" r="75%"><stop offset="0%" stop-color="#FFF6D8" stop-opacity="1"/><stop offset="50%" stop-color="#F2B705" stop-opacity="1"/><stop offset="100%" stop-color="#F2B705" stop-opacity="0"/></radialGradient><filter id="mtn16glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#spot)"/>
+  <g stroke="#7A3308" stroke-width="1.5" fill="none" opacity="0.28">
+    <circle cx="400" cy="225" r="170" stroke-dasharray="4 7"/>
+    <circle cx="400" cy="225" r="136"/>
+  </g>
+  <g transform="translate(400,228) scale(1.4)">
+    
+    <ellipse cx="0" cy="62" rx="88" ry="10" fill="#000" opacity="0.12"/>
+    <circle cx="34" cy="-62" r="30" fill="url(#mtn16sun)" filter="url(#mtn16glow)"/>
+    <circle cx="34" cy="-62" r="15" fill="url(#mtn16sun)"/>
+    <path d="M-88,50 L-42,-18 L-16,10 L14,-42 L46,-4 L88,50 Z" fill="url(#mtn16back)" opacity="0.85"/>
+    <path d="M-70,52 L-28,-34 L2,-2 L28,-56 L88,52 Z" fill="url(#mtn16front)"/>
+    <path d="M28,-56 L38,-44 L20,-38 Z" fill="#FFFFFF" opacity="0.55"/>
+    <path d="M-28,-34 L-20,-24 L-36,-18 Z" fill="#FFFFFF" opacity="0.4"/>
+    <g opacity="0.55" fill="#FFFFFF">
+      <ellipse cx="-58" cy="-70" rx="16" ry="6"/>
+      <ellipse cx="-46" cy="-74" rx="11" ry="5"/>
+      <ellipse cx="60" cy="-30" rx="14" ry="5"/>
+    </g>
+  </g>
+  <rect x="0" y="500" width="800" height="100" fill="#7A3308" opacity="0.94"/>
+  <rect x="0" y="500" width="800" height="3" fill="#7A3308"/>
+  <text x="400" y="558" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="32" fill="#FFF8ED" font-weight="600">Govardhan &amp; Annakut Kit</text>
+</svg>

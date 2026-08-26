@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "ritkalp-festivals-dev",
+      "runtimeExecutable": "/bin/bash",
+      "runtimeArgs": ["-c", "PATH=/opt/homebrew/opt/node@20/bin:$PATH npm run dev"],
+      "port": 3000
+    }
+  ]
+}
