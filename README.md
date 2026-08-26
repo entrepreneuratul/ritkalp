@@ -188,14 +188,28 @@ model" section) — nothing about it is Ritkalp-specific.
   DB prices, closing what used to be the one gap in this file's price
   re-verification: a custom combo's `unitPrice` used to be trusted
   as-is from the client.
-- **Known limitation, not yet addressed:** stock is decremented at
+- **Stale-order stock release.** Stock is decremented at
   checkout-intent time, before payment completes (true for both the
   WhatsApp and Razorpay flows, and was already true before this
   integration — see `app/api/payment/create-order/route.ts`'s
-  comments). An abandoned/failed Razorpay payment now leaves real stock
-  decremented in Inventoryfy with no automatic release. Worth a
-  follow-up (e.g. releasing stock for unpaid orders after some time
-  window) before this matters for real money.
+  comments), so an abandoned/failed Razorpay payment would otherwise
+  leave real stock locked up in Inventoryfy forever.
+  `app/api/cron/release-stale-orders/route.ts` — scheduled via
+  `vercel.json` (default every 15 minutes; **check your Vercel plan's
+  cron frequency limits**, the Hobby tier has historically been more
+  restrictive than Pro) — finds `ONLINE_PAYMENT` orders still `UNPAID`
+  past `STALE_ORDER_MINUTES` (default 30) and cancels them through
+  Inventoryfy's new `POST /integrations/v1/orders/cancel`, which
+  restores stock the same way cancelling from inside Inventoryfy
+  itself would. **Deliberately scoped to `ONLINE_PAYMENT` only** — a
+  WhatsApp order staying `UNPAID` is completely normal (the business
+  collects payment separately, COD/UPI) and must never be touched by
+  this job; it isn't. Protected by `CRON_SECRET` (Vercel sends it
+  automatically as a Bearer token on scheduled invocations once that
+  env var is set) — runs unauthenticated with a console warning if
+  unset, which is fine for local testing
+  (`curl http://localhost:3000/api/cron/release-stale-orders`) but not
+  for a real deployment.
 
 ## How it's organized
 

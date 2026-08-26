@@ -84,3 +84,22 @@ export async function placeInventoryfyOrder(params: {
     body: params,
   });
 }
+
+/**
+ * Cancels an order this storefront created — releasing the stock it
+ * decremented, exactly as if the order were cancelled from inside
+ * Inventoryfy itself (same restock rules: only a real PROCESSING/SHIPPED
+ * order actually restores anything). `inventoryfyOrderId` is
+ * Inventoryfy's own order id (the same one placeInventoryfyOrder
+ * returned and Order.inventoryfyOrderId already stores locally — no
+ * separate externalOrderId needs to be persisted just for this). Used
+ * by the stale-order release job
+ * (app/api/cron/release-stale-orders/route.ts) to un-stick stock for an
+ * abandoned/failed Razorpay checkout — see README's "Inventory model".
+ */
+export async function cancelInventoryfyOrder(inventoryfyOrderId: string): Promise<InventoryfyOrderResult> {
+  return call<InventoryfyOrderResult>("/integrations/v1/orders/cancel", {
+    method: "POST",
+    body: { orderId: inventoryfyOrderId },
+  });
+}
