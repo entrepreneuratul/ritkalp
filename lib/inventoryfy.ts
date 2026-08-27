@@ -61,8 +61,17 @@ async function call<T>(path: string, options: { method?: string; body?: unknown 
     body: options.body ? JSON.stringify(options.body) : undefined,
     // This is a synchronous checkout dependency, not a background sync —
     // don't hang a customer's checkout indefinitely if Inventoryfy is
-    // unreachable.
-    signal: AbortSignal.timeout(8000),
+    // unreachable. 25s, not something short like 8s, because Inventoryfy's
+    // API runs on Render's free tier, which spins the service down after
+    // ~15 minutes idle — the first request after a quiet spell pays a real
+    // cold-start cost (well-documented as 30-50s+ in the worst case, but
+    // normally well under this). A too-short timeout here was a real,
+    // reproducible checkout failure ("Payment could not start") for
+    // exactly that reason, not a one-off. Paired with `maxDuration` on
+    // every route that calls into here (see app/api/payment/create-order
+    // and app/api/orders) — Vercel kills a serverless function at its own
+    // duration cap regardless of this signal, so both need to agree.
+    signal: AbortSignal.timeout(25000),
   });
 
   const isJson = (res.headers.get("content-type") || "").includes("application/json");

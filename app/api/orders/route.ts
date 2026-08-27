@@ -3,6 +3,11 @@ import { auth } from "@/lib/auth";
 import { createOrderFromCart } from "@/lib/orders";
 import { CreateOrderSchema } from "@/lib/validation/order";
 
+// See the matching comment in app/api/payment/create-order/route.ts —
+// createOrderFromCart's Inventoryfy call can take up to 25s on a cold
+// start, longer than Vercel's default function duration.
+export const maxDuration = 30;
+
 /**
  * Creates an Order row from the cart — called by the existing WhatsApp
  * checkout flow (components/CartDrawer.tsx) so every order is recorded

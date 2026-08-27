@@ -5,6 +5,12 @@ import { getRazorpay } from "@/lib/razorpay";
 import { prisma } from "@/lib/prisma";
 import { CreateOrderSchema } from "@/lib/validation/order";
 
+// createOrderFromCart calls Inventoryfy synchronously (lib/inventoryfy.ts),
+// which tolerates up to 25s for a Render free-tier cold start — Vercel's
+// own default function duration (10s) would otherwise kill this route
+// before that timeout ever gets a chance to fire.
+export const maxDuration = 30;
+
 /**
  * Step 1 of the Razorpay flow: create our own Order (server-verified
  * total — see lib/orders.ts), then a matching Razorpay order for that
