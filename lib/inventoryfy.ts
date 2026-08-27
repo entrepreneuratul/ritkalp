@@ -35,6 +35,15 @@ export interface InventoryfyOrderResult {
   accepted: boolean;
 }
 
+export interface InventoryfyCatalogItem {
+  sku: string;
+  name: string;
+  price: number;
+  availableStock: number;
+  isBundle: boolean;
+  category: string | null;
+}
+
 async function call<T>(path: string, options: { method?: string; body?: unknown } = {}): Promise<T> {
   if (!API_KEY) {
     throw new InventoryfyError(
@@ -102,4 +111,15 @@ export async function cancelInventoryfyOrder(inventoryfyOrderId: string): Promis
     method: "POST",
     body: { orderId: inventoryfyOrderId },
   });
+}
+
+/**
+ * The full list of products/variants Inventoryfy has for this business —
+ * used by the admin "Fetch new items" action (lib/actions/admin-catalog.ts)
+ * to find products that exist there but have no matching local row yet.
+ * Owner-triggered (a button click), not called on any customer-facing
+ * path, so the same 8s timeout as everything else in this file is fine.
+ */
+export async function fetchInventoryfyCatalog(): Promise<InventoryfyCatalogItem[]> {
+  return call<InventoryfyCatalogItem[]>("/integrations/v1/catalog");
 }

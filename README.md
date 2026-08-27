@@ -155,13 +155,27 @@ model" section) — nothing about it is Ritkalp-specific.
   a kit includes, which is now a checklist (`components/admin/KitForm.tsx`)
   constrained to items that already have an `inventoryfySku`; typing a
   free-text new item name (the old textarea) used to silently create an
-  unsynced local `Item`, which isn't possible anymore. **Known gap:**
-  there's currently no way to introduce a genuinely *new* item into
-  Ritkalp at all — `scripts/sync-inventoryfy.ts` only pushes local rows
-  that don't yet have an `inventoryfySku`, it has no reverse direction
-  that pulls a new Inventoryfy product back in as a fresh local row. A
-  new samagri item added in Inventoryfy today has no path into Ritkalp's
-  catalog until that reverse-sync is built.
+  unsynced local `Item`, which isn't possible anymore.
+- **Pulling a genuinely new item in — `fetchNewItemsAction`
+  (`lib/actions/admin-catalog.ts`), the "Fetch new items from
+  Inventoryfy" button on the admin Catalog page's Items tab.** The
+  reverse of `sync-inventoryfy.ts`, which only ever pushes local rows
+  *out*: this owner-triggered action calls
+  `GET /integrations/v1/catalog`, finds Inventoryfy products for the
+  current festival's category (matched by name — the same one-category-
+  per-festival `sync-inventoryfy.ts` creates) that aren't a bundle and
+  whose SKU isn't already claimed by a local `Item`/`BuilderExtraItem`/
+  `Kit`, and creates a new `Item` row for each — never inventing a
+  name/price/stock, only ever mirroring what Inventoryfy already says
+  exists. Deliberately a manual button, not automatic/scheduled: a bulk
+  re-stock or catalog cleanup done directly in Inventoryfy should never
+  silently reshape Ritkalp's catalog without an owner choosing the
+  moment. **Scoped to `Item` only, not `BuilderExtraItem`** — a Kit
+  Builder extra also needs a category and icon assigned, both
+  Ritkalp-only concepts Inventoryfy has no data for and that this app no
+  longer has any admin UI to set after the fact, so a genuinely new
+  extra still needs a one-off manual decision outside this button for
+  now.
 - **Kits are real bundles, not a separate concept.** A `Kit` maps to an
   Inventoryfy bundle Product; its `KitLineItem`s map 1:1 to
   `BundleComponent`s pointing at each component `Item`'s own

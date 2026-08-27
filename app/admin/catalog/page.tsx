@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { festivals } from "@/lib/festivals/registry";
-import { saveBuilderCategoryAction } from "@/lib/actions/admin-catalog";
+import { saveBuilderCategoryAction, fetchNewItemsAction } from "@/lib/actions/admin-catalog";
 import { PUJA_ICON_KEYS } from "@/lib/festivals/types";
 
 type Tab = "kits" | "extras" | "items";
@@ -9,7 +9,7 @@ type Tab = "kits" | "extras" | "items";
 export default async function AdminCatalogPage({
   searchParams,
 }: {
-  searchParams: { festival?: string; tab?: string; error?: string };
+  searchParams: { festival?: string; tab?: string; error?: string; fetched?: string };
 }) {
   const festivalSlug = searchParams.festival ?? festivals[0].slug;
   const tab: Tab =
@@ -173,9 +173,29 @@ export default async function AdminCatalogPage({
         <div className="space-y-4">
           <p className="text-xs text-slate-500">
             Read-only — every item here is a mirror of a real Inventoryfy product (see README&apos;s
-            &quot;Inventory model&quot;). Add, rename, reprice, or remove an item in Inventoryfy, then
-            run <code>npm run sync:inventoryfy</code> to bring the change here.
+            &quot;Inventory model&quot;). Rename, reprice, or remove an item in Inventoryfy, then run{" "}
+            <code>npm run sync:inventoryfy</code> to bring the change here. For a brand-new item, use
+            the button below instead — it only pulls in items already synced into this festival&apos;s
+            Inventoryfy category, never invents one.
           </p>
+
+          {searchParams.fetched !== undefined && (
+            <div className="rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm text-emerald-800">
+              {searchParams.fetched === "0"
+                ? "No new items found — Inventoryfy has nothing here that isn't already synced."
+                : `Fetched ${searchParams.fetched} new item${searchParams.fetched === "1" ? "" : "s"} from Inventoryfy.`}
+            </div>
+          )}
+
+          <form action={fetchNewItemsAction}>
+            <input type="hidden" name="festivalSlug" value={festivalSlug} />
+            <button
+              type="submit"
+              className="rounded-lg bg-slate-800 text-white px-4 py-2 text-sm font-semibold hover:bg-slate-900"
+            >
+              Fetch new items from Inventoryfy
+            </button>
+          </form>
 
           <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
             <table className="w-full text-sm">

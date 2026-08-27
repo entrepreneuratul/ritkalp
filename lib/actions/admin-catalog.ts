@@ -6,6 +6,8 @@ import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { KitKind } from "@prisma/client";
 import { setKitLineItems } from "@/lib/kitItems";
+import { fetchInventoryfyCatalog } from "@/lib/inventoryfy";
+import { getFestival } from "@/lib/festivals/registry";
 
 async function requireAdmin() {
   const session = await auth();
@@ -106,17 +108,75 @@ export async function saveBuilderCategoryAction(formData: FormData) {
   redirect(`/admin/catalog?festival=${festivalSlug}&tab=extras`);
 }
 
-// ---- Items & Builder Extras: intentionally NO admin actions here ------
+// ---- Items & Builder Extras: intentionally NO create/edit/delete here -
 // Every Item and BuilderExtraItem must be a 1:1 mirror of a real
 // Inventoryfy product (see README's "Inventory model") — Ritkalp no
-// longer creates, edits, or deletes either one. What exists and what it
-// costs/how much is in stock all come from Inventoryfy; presentation
-// (which Kit an item appears in) is still fully editable via
-// saveKitAction above.
-//
-// Known gap, not yet solved: there is currently no way to introduce a
-// genuinely NEW item into Ritkalp at all. scripts/sync-inventoryfy.ts
-// only pushes local rows that don't have an inventoryfySku yet — it has
-// no reverse direction that pulls a new Inventoryfy product back into
-// Ritkalp as a fresh local row. Until that's built, a new samagri item
-// has no path into this app's catalog. See README's "Inventory model".
+// longer creates, edits, or deletes either one by hand. What exists and
+// what it costs/how much is in stock all come from Inventoryfy;
+// presentation (which Kit an item appears in) is still fully editable
+// via saveKitAction above. The one exception is fetchNewItemsAction
+// below — it still only ever *creates from what Inventoryfy already
+// says exists*, never invents a name/price/stock locally, so it doesn't
+// weaken the "Inventoryfy is the source of truth" rule.
+
+/**
+ * The reverse half of scripts/sync-inventoryfy.ts, which only ever
+ * pushes local rows *out*: this pulls newly-added Inventoryfy products
+ * *in*. Owner-triggered only (a button on the Items tab) — deliberately
+ * not automatic/scheduled, so a bulk warehouse re-stock or catalog
+ * cleanup in Inventoryfy never silently reshapes Ritkalp's catalog
+ * mid-session.
+ *
+ * Scope: creates new `Item` rows only (kit components — the thing the
+ * owner actually asked to close the gap on). A `BuilderExtraItem` also
+ * needs a category and an icon assigned, both Ritkalp-only concepts
+ * Inventoryfy has no data for and that this app no longer has any admin
+ * UI to set after the fact — so a genuinely new Kit Builder extra still
+ * needs a one-off decision outside this button for now (see the
+ * README's "Inventory model").
+ *
+ * Matching: a product qualifies as "new" when its SKU isn't already
+ * used by any local Item/BuilderExtraItem/Kit (inventoryfySku is
+ * @unique per model, so any collision means it's already mirrored
+ * somewhere), it isn't a bundle (a bundle product is always one of
+ * Ritkalp's own Kits — never something to import as a plain component),
+ * and its Inventoryfy category name matches this festival's
+ * `nameEnglish` (the same category sync-inventoryfy.ts creates one of
+ * per festival) — so running this on the Navratri tab can't pull in a
+ * Diwali-only product.
+ */
+export async function fetchNewItemsAction(formData: FormData) {
+  await requireAdmin();
+  const festivalSlug = String(formData.get("festivalSlug"));
+  const festival = getFestival(festivalSlug);
+  if (!festival) throw new Error(`Unknown festival: ${festivalSlug}`);
+
+  const [catalog, existingItems, existingExtras, existingKits] = await Promise.all([
+    fetchInventoryfyCatalog(),
+    prisma.item.findMany({ where: { inventoryfySku: { not: null } }, select: { inventoryfySku: true } }),
+    prisma.builderExtraItem.findMany({ where: { inventoryfySku: { not: null } }, select: { inventoryfySku: true } }),
+    prisma.kit.findMany({ where: { inventoryfySku: { not: null } }, select: { inventoryfySku: true } }),
+  ]);
+  const knownSkus = new Set(
+    [...existingItems, ...existingExtras, ...existingKits].map((row) => row.inventoryfySku as string),
+  );
+
+  const newProducts = catalog.filter(
+    (p) => !p.isBundle && p.category === festival.nameEnglish && !knownSkus.has(p.sku),
+  );
+
+  if (newProducts.length > 0) {
+    await prisma.item.createMany({
+      data: newProducts.map((p) => ({
+        festivalSlug,
+        name: p.name,
+        price: p.price,
+        stock: p.availableStock,
+        inventoryfySku: p.sku,
+      })),
+    });
+  }
+
+  revalidatePath("/admin/catalog");
+  redirect(`/admin/catalog?festival=${festivalSlug}&tab=items&fetched=${newProducts.length}`);
+}
