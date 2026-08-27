@@ -139,16 +139,29 @@ e-commerce site would connect to any third-party inventory platform
 a generic, platform-agnostic contract (its own README's "Integrations
 model" section) — nothing about it is Ritkalp-specific.
 
-- **What moved, and what didn't.** Presentation (name, description,
-  image, item ordering, festival grouping, featured/badge, the whole
-  day-guide) is still 100% Ritkalp's own data, editable exactly as
-  before. Only *commercial truth* — price and real stock quantity —
-  moved to Inventoryfy. `Item`, `BuilderExtraItem`, and `Kit` each
-  gained an `inventoryfySku` field and now mirror Inventoryfy's price +
-  stock (`price`/`stock` columns), refreshed by webhook — the admin
-  catalog forms show these read-only ("managed in Inventoryfy") once a
-  row is linked, rather than letting an edit here get silently
-  overwritten by the next webhook.
+- **What moved, and what didn't.** Only *commercial truth* — price and
+  real stock quantity — moved to Inventoryfy. `Item`, `BuilderExtraItem`,
+  and `Kit` each gained an `inventoryfySku` field and now mirror
+  Inventoryfy's price + stock (`price`/`stock` columns), refreshed by
+  webhook.
+- **Items and Builder Extras are a strict read-only mirror — Kits are
+  not.** The Ritkalp admin catalog UI can no longer create, edit, or
+  delete an `Item` or `BuilderExtraItem` at all — what exists, what
+  it's named, and what it costs/how much is in stock is entirely
+  Inventoryfy's data, one-way synced in by `npm run sync:inventoryfy`.
+  `Kit`s are the opposite: full admin CRUD stays on Ritkalp's side —
+  name, description, image, festival grouping, featured/badge, the
+  whole day-guide, create/edit/delete, all of it — *except* which items
+  a kit includes, which is now a checklist (`components/admin/KitForm.tsx`)
+  constrained to items that already have an `inventoryfySku`; typing a
+  free-text new item name (the old textarea) used to silently create an
+  unsynced local `Item`, which isn't possible anymore. **Known gap:**
+  there's currently no way to introduce a genuinely *new* item into
+  Ritkalp at all — `scripts/sync-inventoryfy.ts` only pushes local rows
+  that don't yet have an `inventoryfySku`, it has no reverse direction
+  that pulls a new Inventoryfy product back in as a fresh local row. A
+  new samagri item added in Inventoryfy today has no path into Ritkalp's
+  catalog until that reverse-sync is built.
 - **Kits are real bundles, not a separate concept.** A `Kit` maps to an
   Inventoryfy bundle Product; its `KitLineItem`s map 1:1 to
   `BundleComponent`s pointing at each component `Item`'s own

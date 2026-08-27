@@ -5,18 +5,11 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { KitKind } from "@prisma/client";
-import { syncKitLineItems } from "@/lib/kitItems";
+import { setKitLineItems } from "@/lib/kitItems";
 
 async function requireAdmin() {
   const session = await auth();
   if (session?.user?.role !== "admin") throw new Error("Not authorized");
-}
-
-function parseItemsList(raw: string): string[] {
-  return raw
-    .split("\n")
-    .map((s) => s.trim())
-    .filter(Boolean);
 }
 
 function slugify(input: string): string {
@@ -28,6 +21,13 @@ function slugify(input: string): string {
 }
 
 // ---- Kits (curated + day) --------------------------------------------
+// Full admin CRUD, by design — a Kit is the presentational/commercial
+// wrapper (name, description, image, badge, featured, which day) and
+// stays entirely Ritkalp's own to manage. Its *included items*, below,
+// are the one part of this action that's constrained: only existing,
+// already-Inventoryfy-linked Items can be picked, never invented here
+// — see lib/kitItems.ts's setKitLineItems for why this is a different
+// function from the one prisma/seed.ts uses.
 
 export async function saveKitAction(formData: FormData) {
   await requireAdmin();
@@ -39,7 +39,7 @@ export async function saveKitAction(formData: FormData) {
   const name = String(formData.get("name"));
   const description = String(formData.get("description"));
   const image = String(formData.get("image"));
-  const itemNames = parseItemsList(String(formData.get("items") ?? ""));
+  const itemIds = formData.getAll("itemIds").map(String);
   const featured = formData.get("featured") === "on";
   const draft = formData.get("draft") === "on";
   const badge = String(formData.get("badge") ?? "").trim();
@@ -49,7 +49,7 @@ export async function saveKitAction(formData: FormData) {
   // for a brand-new, not-yet-synced kit (Kit.price has no DB default,
   // so a genuinely new kit still needs a starting value; run
   // `npm run sync:inventoryfy` afterwards to create its real Inventoryfy
-  // product and start mirroring for real).
+  // bundle product and start mirroring for real).
   const priceRaw = formData.get("price");
   const price = priceRaw !== null ? Number(priceRaw) : undefined;
 
@@ -71,9 +71,7 @@ export async function saveKitAction(formData: FormData) {
   } else {
     await prisma.kit.create({ data: { id: kitId, price: price ?? 0, ...data } });
   }
-  // Each line is upserted into the shared Item table for this festival
-  // and re-linked in the given order — see lib/kitItems.ts.
-  await syncKitLineItems(prisma, { festivalSlug, kitId, itemNames });
+  await setKitLineItems(prisma, { kitId, itemIds });
 
   revalidatePath("/admin/catalog");
   revalidatePath(`/[festival]`, "page");
@@ -89,7 +87,11 @@ export async function deleteKitAction(formData: FormData) {
   redirect(`/admin/catalog?festival=${festivalSlug}`);
 }
 
-// ---- Kit Builder extras -----------------------------------------------
+// ---- Kit Builder extra categories --------------------------------------
+// Categories are a pure Ritkalp-side organizing concept (a label the
+// Kit Builder groups extras under) — they don't correspond to anything
+// in Inventoryfy, so unlike the items inside them, creating one here is
+// fine.
 
 export async function saveBuilderCategoryAction(formData: FormData) {
   await requireAdmin();
@@ -104,108 +106,17 @@ export async function saveBuilderCategoryAction(formData: FormData) {
   redirect(`/admin/catalog?festival=${festivalSlug}&tab=extras`);
 }
 
-export async function saveBuilderItemAction(formData: FormData) {
-  await requireAdmin();
-
-  const id = String(formData.get("id") ?? "");
-  const categoryId = String(formData.get("categoryId"));
-  const festivalSlug = String(formData.get("festivalSlug"));
-  const name = String(formData.get("name")).trim();
-  const icon = String(formData.get("icon"));
-  // Same story as saveKitAction: price is mirrored from Inventoryfy
-  // once linked — the form only submits one for a brand-new extra.
-  const priceRaw = formData.get("price");
-  const price = priceRaw !== null ? Number(priceRaw) : undefined;
-
-  if (id) {
-    await prisma.builderExtraItem.update({
-      where: { id },
-      data: price !== undefined ? { name, icon, price } : { name, icon },
-    });
-  } else {
-    await prisma.builderExtraItem.create({
-      data: { categoryId, itemKey: slugify(name), name, icon, price: price ?? 0, sortOrder: 99 },
-    });
-  }
-
-  revalidatePath("/admin/catalog");
-  redirect(`/admin/catalog?festival=${festivalSlug}&tab=extras`);
-}
-
-export async function deleteBuilderItemAction(formData: FormData) {
-  await requireAdmin();
-  const id = String(formData.get("id"));
-  const festivalSlug = String(formData.get("festivalSlug"));
-  await prisma.builderExtraItem.delete({ where: { id } });
-  revalidatePath("/admin/catalog");
-  redirect(`/admin/catalog?festival=${festivalSlug}&tab=extras`);
-}
-
-// ---- Master item list (Item / KitLineItem — see lib/kitItems.ts) -----
-// Editing a kit's "items" textarea (saveKitAction, above) is still the
-// normal way to add/remove what's IN a kit. This is for the separate
-// case of adjusting a shared Item's own price/stock everywhere it's
-// used at once, without retyping its kit's item list.
-
-export async function updateItemAction(formData: FormData) {
-  await requireAdmin();
-  const id = String(formData.get("id"));
-  const festivalSlug = String(formData.get("festivalSlug"));
-  const priceRaw = String(formData.get("price") ?? "").trim();
-
-  // Only reachable pre-sync anyway (the admin UI hides this form once
-  // an item has an inventoryfySku — see app/admin/catalog/page.tsx) —
-  // price becomes Inventoryfy-mirrored after that.
-  await prisma.item.update({
-    where: { id },
-    data: { price: priceRaw ? Number(priceRaw) : null },
-  });
-
-  revalidatePath("/admin/catalog");
-  redirect(`/admin/catalog?festival=${festivalSlug}&tab=items`);
-}
-
-/** Creates a standalone Item, not yet attached to any kit — for
- *  pre-stocking a shared item (with its own price) before it's added to
- *  a kit's "Included items" box, or just to record something separately.
- *  Upserts on (festivalSlug, name) so re-adding an existing name just
- *  updates its price/stock instead of erroring. */
-export async function createItemAction(formData: FormData) {
-  await requireAdmin();
-  const festivalSlug = String(formData.get("festivalSlug"));
-  const name = String(formData.get("name") ?? "").trim();
-  const priceRaw = String(formData.get("price") ?? "").trim();
-  if (!name) return;
-
-  await prisma.item.upsert({
-    where: { festivalSlug_name: { festivalSlug, name } },
-    update: { price: priceRaw ? Number(priceRaw) : null },
-    create: { festivalSlug, name, price: priceRaw ? Number(priceRaw) : null },
-  });
-
-  revalidatePath("/admin/catalog");
-  redirect(`/admin/catalog?festival=${festivalSlug}&tab=items`);
-}
-
-/** Only succeeds for an item that isn't used in any kit (the KitLineItem
- *  foreign key is RESTRICT — deleting one still in use would otherwise
- *  fail with a raw DB error, so we check first and no-op with a message
- *  instead of letting that surface to the admin as a crash). */
-export async function deleteItemAction(formData: FormData) {
-  await requireAdmin();
-  const id = String(formData.get("id"));
-  const festivalSlug = String(formData.get("festivalSlug"));
-
-  const usageCount = await prisma.kitLineItem.count({ where: { itemId: id } });
-  if (usageCount > 0) {
-    redirect(
-      `/admin/catalog?festival=${festivalSlug}&tab=items&error=${encodeURIComponent(
-        `Can't delete — still used in ${usageCount} kit(s). Remove it from those kits' item lists first.`
-      )}`
-    );
-  }
-
-  await prisma.item.delete({ where: { id } });
-  revalidatePath("/admin/catalog");
-  redirect(`/admin/catalog?festival=${festivalSlug}&tab=items`);
-}
+// ---- Items & Builder Extras: intentionally NO admin actions here ------
+// Every Item and BuilderExtraItem must be a 1:1 mirror of a real
+// Inventoryfy product (see README's "Inventory model") — Ritkalp no
+// longer creates, edits, or deletes either one. What exists and what it
+// costs/how much is in stock all come from Inventoryfy; presentation
+// (which Kit an item appears in) is still fully editable via
+// saveKitAction above.
+//
+// Known gap, not yet solved: there is currently no way to introduce a
+// genuinely NEW item into Ritkalp at all. scripts/sync-inventoryfy.ts
+// only pushes local rows that don't have an inventoryfySku yet — it has
+// no reverse direction that pulls a new Inventoryfy product back into
+// Ritkalp as a fresh local row. Until that's built, a new samagri item
+// has no path into this app's catalog. See README's "Inventory model".

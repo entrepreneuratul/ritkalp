@@ -11,7 +11,22 @@ export default async function EditKitPage({ params }: { params: { id: string } }
   });
   if (!kit) notFound();
 
-  const items = kit.lineItems.map((li) => li.item.name);
+  const selectedItemIds = kit.lineItems.map((li) => li.item.id);
+
+  const syncedItems = await prisma.item.findMany({
+    where: { festivalSlug: kit.festivalSlug, inventoryfySku: { not: null } },
+    orderBy: { name: "asc" },
+    select: { id: true, name: true },
+  });
+  // Union with whatever this kit already includes, even if (unexpectedly)
+  // not yet synced — otherwise an already-selected item with no
+  // inventoryfySku would have no checkbox to render, and saving would
+  // silently drop it from the kit.
+  const syncedIds = new Set(syncedItems.map((i) => i.id));
+  const unsyncedButIncluded = kit.lineItems
+    .filter((li) => !syncedIds.has(li.item.id))
+    .map((li) => ({ id: li.item.id, name: `${li.item.name} (not yet synced)` }));
+  const availableItems = [...syncedItems, ...unsyncedButIncluded];
 
   return (
     <div className="max-w-2xl">
@@ -19,7 +34,7 @@ export default async function EditKitPage({ params }: { params: { id: string } }
         ← Catalog
       </Link>
       <h1 className="text-2xl font-bold text-slate-800 mt-2 mb-6">Edit Kit</h1>
-      <KitForm kit={{ ...kit, items }} />
+      <KitForm kit={{ ...kit, selectedItemIds }} availableItems={availableItems} />
 
       <form action={deleteKitAction} className="mt-4">
         <input type="hidden" name="id" value={kit.id} />

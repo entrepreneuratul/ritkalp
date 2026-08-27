@@ -37,3 +37,31 @@ export async function syncKitLineItems(
     }),
   ]);
 }
+
+/**
+ * The admin-facing equivalent of syncKitLineItems above, deliberately
+ * NOT the same function — this one never creates an Item, only links a
+ * kit to items that already exist (and are already Inventoryfy-synced,
+ * in practice, since every Item now must be — see README's "Inventory
+ * model"). syncKitLineItems stays as-is for prisma/seed.ts's one-time
+ * initial content load, which legitimately runs *before* any
+ * Inventoryfy linkage exists; this one is what
+ * lib/actions/admin-catalog.ts's saveKitAction uses, where inventing a
+ * new item name on the fly would silently create an unsynced,
+ * un-mirrored item — exactly what's not allowed anymore.
+ */
+export async function setKitLineItems(
+  prisma: PrismaClient,
+  { kitId, itemIds }: { kitId: string; itemIds: string[] }
+) {
+  await prisma.$transaction([
+    prisma.kitLineItem.deleteMany({ where: { kitId } }),
+    prisma.kitLineItem.createMany({
+      data: itemIds.map((itemId, index) => ({
+        kitId,
+        itemId,
+        sortOrder: index,
+      })),
+    }),
+  ]);
+}

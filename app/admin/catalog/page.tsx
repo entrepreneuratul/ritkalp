@@ -1,13 +1,7 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { festivals } from "@/lib/festivals/registry";
-import {
-  saveBuilderCategoryAction,
-  deleteBuilderItemAction,
-  updateItemAction,
-  createItemAction,
-  deleteItemAction,
-} from "@/lib/actions/admin-catalog";
+import { saveBuilderCategoryAction } from "@/lib/actions/admin-catalog";
 import { PUJA_ICON_KEYS } from "@/lib/festivals/types";
 
 type Tab = "kits" | "extras" | "items";
@@ -88,12 +82,12 @@ export default async function AdminCatalogPage({
       {tab === "kits" ? (
         <div className="space-y-8">
           <p className="text-xs text-slate-500 -mt-2">
-            Each kit&apos;s items are edited via its own &quot;Included items&quot; box
-            below (one per line) — see the{" "}
+            Each kit&apos;s included items are picked from a checklist on its own edit page — only
+            items already synced with Inventoryfy can be chosen (see the{" "}
             <a href={`/admin/catalog?festival=${festivalSlug}&tab=items`} className="underline">
               Items tab
-            </a>{" "}
-            to adjust a shared item&apos;s price/stock everywhere it&apos;s used at once.
+            </a>
+            , which is read-only here — items themselves are managed in Inventoryfy, not Ritkalp).
           </p>
           <KitTable
             title="Curated Kits (Ready-Made Kits section)"
@@ -114,17 +108,22 @@ export default async function AdminCatalogPage({
         </div>
       ) : tab === "extras" ? (
         <div className="space-y-6">
+          <p className="text-xs text-slate-500 -mt-2">
+            Read-only — every extra here is a mirror of a real Inventoryfy product (see README&apos;s
+            &quot;Inventory model&quot;). Add, rename, reprice, or remove an extra in Inventoryfy, then
+            run <code>npm run sync:inventoryfy</code>. Categories (the groupings below) are still
+            managed here, since they&apos;re a Ritkalp-only concept.
+          </p>
           {categories.map((cat) => (
             <div key={cat.id} className="bg-white rounded-2xl border border-slate-200 p-5">
               <h3 className="font-semibold text-slate-800 mb-3">{cat.label}</h3>
-              <table className="w-full text-sm mb-3">
+              <table className="w-full text-sm">
                 <thead className="text-xs text-slate-500 uppercase">
                   <tr>
                     <th className="text-left py-1.5">Name</th>
                     <th className="text-left py-1.5">Icon</th>
                     <th className="text-left py-1.5">Price</th>
                     <th className="text-left py-1.5">Stock</th>
-                    <th className="text-left py-1.5"></th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
@@ -134,31 +133,17 @@ export default async function AdminCatalogPage({
                       <td className="py-2 text-slate-500">{item.icon}</td>
                       <td className="py-2">₹{item.price}</td>
                       <td className="py-2">{item.stock > 0 ? `${item.stock} in stock` : "Out of stock"}</td>
-                      <td className="py-2 text-right space-x-3">
-                        <Link
-                          href={`/admin/catalog/extras/${item.id}/edit?festival=${festivalSlug}`}
-                          className="text-slate-600 hover:underline"
-                        >
-                          Edit
-                        </Link>
-                        <form action={deleteBuilderItemAction} className="inline">
-                          <input type="hidden" name="id" value={item.id} />
-                          <input type="hidden" name="festivalSlug" value={festivalSlug} />
-                          <button type="submit" className="text-red-500 hover:underline">
-                            Delete
-                          </button>
-                        </form>
-                      </td>
                     </tr>
                   ))}
+                  {cat.items.length === 0 && (
+                    <tr>
+                      <td colSpan={4} className="py-4 text-center text-slate-400">
+                        No synced extras in this category yet.
+                      </td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
-              <Link
-                href={`/admin/catalog/extras/new?festival=${festivalSlug}&category=${cat.id}`}
-                className="text-xs font-semibold text-slate-600 hover:underline"
-              >
-                + Add item to {cat.label}
-              </Link>
             </div>
           ))}
 
@@ -186,9 +171,11 @@ export default async function AdminCatalogPage({
         </div>
       ) : (
         <div className="space-y-4">
-          {searchParams.error && (
-            <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-700">{searchParams.error}</p>
-          )}
+          <p className="text-xs text-slate-500">
+            Read-only — every item here is a mirror of a real Inventoryfy product (see README&apos;s
+            &quot;Inventory model&quot;). Add, rename, reprice, or remove an item in Inventoryfy, then
+            run <code>npm run sync:inventoryfy</code> to bring the change here.
+          </p>
 
           <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
             <table className="w-full text-sm">
@@ -196,9 +183,7 @@ export default async function AdminCatalogPage({
                 <tr>
                   <th className="text-left px-4 py-3">Name</th>
                   <th className="text-left px-4 py-3">Used in</th>
-                  <th className="text-left px-4 py-3">Price (optional)</th>
-                  <th className="text-left px-4 py-3">Stock</th>
-                  <th className="text-left px-4 py-3"></th>
+                  <th className="text-left px-4 py-3">Price &amp; stock</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
@@ -208,93 +193,28 @@ export default async function AdminCatalogPage({
                     <td className="px-4 py-2.5 text-slate-500">
                       {item._count.kitLineItems} kit{item._count.kitLineItems === 1 ? "" : "s"}
                     </td>
-                    <td className="px-4 py-2.5" colSpan={2}>
+                    <td className="px-4 py-2.5 text-slate-500">
                       {item.inventoryfySku ? (
-                        <span className="text-xs text-slate-500">
-                          ₹{item.price ?? "—"} · {item.stock} in stock —{" "}
-                          <span className="italic">managed in Inventoryfy</span>
-                        </span>
+                        <>
+                          ₹{item.price ?? "—"} · {item.stock} in stock
+                        </>
                       ) : (
-                        <form action={updateItemAction} className="flex items-center gap-4">
-                          <input type="hidden" name="id" value={item.id} />
-                          <input type="hidden" name="festivalSlug" value={festivalSlug} />
-                          <input
-                            type="number"
-                            name="price"
-                            min={0}
-                            defaultValue={item.price ?? ""}
-                            placeholder="—"
-                            className="w-24 rounded-lg border border-slate-300 px-2 py-1 text-sm"
-                          />
-                          <span className="text-xs text-slate-400">initial price — until synced</span>
-                          <button
-                            type="submit"
-                            className="rounded-lg bg-slate-800 text-white px-3 py-1 text-xs font-semibold hover:bg-slate-900"
-                          >
-                            Save
-                          </button>
-                        </form>
-                      )}
-                    </td>
-                    <td className="px-4 py-2.5 text-right">
-                      {item._count.kitLineItems === 0 && (
-                        <form action={deleteItemAction} className="inline">
-                          <input type="hidden" name="id" value={item.id} />
-                          <input type="hidden" name="festivalSlug" value={festivalSlug} />
-                          <button type="submit" className="text-red-500 hover:underline text-xs">
-                            Delete
-                          </button>
-                        </form>
+                        <span className="italic text-amber-600">not yet synced</span>
                       )}
                     </td>
                   </tr>
                 ))}
                 {items.length === 0 && (
                   <tr>
-                    <td colSpan={5} className="px-4 py-8 text-center text-slate-400">
-                      No items yet — add one below, or via a kit&apos;s &quot;Included items&quot; box.
+                    <td colSpan={3} className="px-4 py-8 text-center text-slate-400">
+                      No items yet — add one in Inventoryfy, then run{" "}
+                      <code>npm run sync:inventoryfy</code>.
                     </td>
                   </tr>
                 )}
               </tbody>
             </table>
           </div>
-
-          <form
-            action={createItemAction}
-            className="bg-white rounded-2xl border border-dashed border-slate-300 p-5 flex items-end gap-3"
-          >
-            <input type="hidden" name="festivalSlug" value={festivalSlug} />
-            <label className="flex-1">
-              <span className="text-xs font-semibold text-slate-600 mb-1 block">New item name</span>
-              <input
-                name="name"
-                required
-                placeholder="e.g. गंगाजल"
-                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
-              />
-            </label>
-            <label className="w-32">
-              <span className="text-xs font-semibold text-slate-600 mb-1 block">Price (optional)</span>
-              <input
-                name="price"
-                type="number"
-                min={0}
-                placeholder="—"
-                className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
-              />
-            </label>
-            <button
-              type="submit"
-              className="rounded-lg bg-slate-800 text-white px-4 py-2 text-sm font-semibold hover:bg-slate-900"
-            >
-              + Add Item
-            </button>
-          </form>
-          <p className="text-xs text-slate-500">
-            This creates the item on its own, not yet inside any kit — add it to a kit from that
-            kit&apos;s &quot;Included items&quot; box (Kits tab) whenever you&apos;re ready.
-          </p>
         </div>
       )}
 
