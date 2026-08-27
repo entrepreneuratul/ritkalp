@@ -195,13 +195,19 @@ model" section) — nothing about it is Ritkalp-specific.
   comments), so an abandoned/failed Razorpay payment would otherwise
   leave real stock locked up in Inventoryfy forever.
   `app/api/cron/release-stale-orders/route.ts` — scheduled via
-  `vercel.json` (default every 15 minutes; **check your Vercel plan's
-  cron frequency limits**, the Hobby tier has historically been more
-  restrictive than Pro) — finds `ONLINE_PAYMENT` orders still `UNPAID`
-  past `STALE_ORDER_MINUTES` (default 30) and cancels them through
+  `vercel.json` — finds `ONLINE_PAYMENT` orders still `UNPAID` past
+  `STALE_ORDER_MINUTES` (default 30) and cancels them through
   Inventoryfy's new `POST /integrations/v1/orders/cancel`, which
   restores stock the same way cancelling from inside Inventoryfy
-  itself would. **Deliberately scoped to `ONLINE_PAYMENT` only** — a
+  itself would. **Confirmed for real (not just a suspected limit):
+  Vercel's Hobby tier rejects any cron schedule more frequent than
+  once daily** — deploying with `*/15 * * * *` failed outright. Running
+  on `0 3 * * *` (daily, 3am UTC) instead means the worst-case delay
+  before an abandoned order's stock is actually released is up to ~24h,
+  not the ~15–45 min the original design intended — an acceptable
+  tradeoff for staying on the free tier pre-launch, but worth
+  reconsidering (tighter schedule, needs Pro) once real order volume
+  makes that delay actually matter. **Deliberately scoped to `ONLINE_PAYMENT` only** — a
   WhatsApp order staying `UNPAID` is completely normal (the business
   collects payment separately, COD/UPI) and must never be touched by
   this job; it isn't. Protected by `CRON_SECRET` (Vercel sends it
