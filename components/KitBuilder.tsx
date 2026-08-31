@@ -122,7 +122,7 @@ export default function KitBuilder({ festival }: { festival: FestivalConfig }) {
   }
 
   return (
-    <section id="kit-builder" className="relative py-20 sm:py-28 bg-surface-soft overflow-hidden">
+    <section id="kit-builder" className="relative scroll-mt-20 py-20 sm:py-28 bg-surface-soft overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn className="text-center max-w-2xl mx-auto mb-4">
           <p className="text-sm font-heavy tracking-widest text-accent-600 uppercase mb-3">

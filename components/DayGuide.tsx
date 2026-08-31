@@ -23,7 +23,7 @@ export default function DayGuide({
   const day = dayGuide.days.find((d) => d.dayNumber === activeDay) ?? dayGuide.days[0];
 
   return (
-    <section id={dayGuide.sectionId} className="relative bg-primary-900 py-20 sm:py-28 overflow-hidden">
+    <section id={dayGuide.sectionId} className="relative scroll-mt-20 bg-primary-900 py-20 sm:py-28 overflow-hidden">
       {/* Subtle mandala texture on the deep background */}
       <div className="absolute inset-0 mandala-texture opacity-40" />
 

@@ -3,6 +3,7 @@ import { Noto_Serif_Devanagari, Poppins, Archivo_Black } from "next/font/google"
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { businessConfig } from "@/config/business";
+import HashScrollFix from "@/components/HashScrollFix";
 
 // Elegant, Devanagari-friendly serif for headings — renders both Hindi
 // and English headings with the same premium, festive feel.
@@ -56,6 +57,7 @@ export default function RootLayout({
             see context/CartContext.tsx. <CartDrawer/> itself is rendered
             per-festival, inside the themed wrapper, so its colors always
             match whichever festival is currently active. */}
+        <HashScrollFix />
         <CartProvider>{children}</CartProvider>
       </body>
     </html>

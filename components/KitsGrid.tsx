@@ -7,7 +7,7 @@ export default function KitsGrid({ festival }: { festival: FestivalConfig }) {
   const { eyebrow, heading, intro, items } = festival.kits;
 
   return (
-    <section id="shop-kits" className="relative py-20 sm:py-28 mandala-texture">
+    <section id="shop-kits" className="relative scroll-mt-20 py-20 sm:py-28 mandala-texture">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn className="text-center max-w-2xl mx-auto mb-8">
           <p className="text-sm font-heavy tracking-widest text-accent-600 uppercase mb-3">

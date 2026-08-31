@@ -266,10 +266,22 @@ body {
   background-position: 0 0, 14px 14px;
 }
 
-/* Smooth scrolling for anchor-link navigation from the sticky navbar. */
-html {
-  scroll-behavior: smooth;
-}
+/* NOTE: deliberately NOT `html { scroll-behavior: smooth }` — that's a
+   known browser footgun (Chromium/WebKit): with it globally on, the
+   browser's own scroll-to-fragment on an initial/full page load (a
+   shared link like /diwali#kit-builder, or a plain <a href="#..."> nav
+   click, which is a real navigation here, not a Next Link) frequently
+   never completes, silently leaving the page at the top. Confirmed by
+   testing prod: every header nav link and "Load into Builder" were
+   broken by this. Smooth scrolling is instead handled in JS — see
+   components/HashScrollFix.tsx, mounted once in the root layout — which
+   isn't subject to the same bug. `scroll-mt-*` on each anchored section
+   keeps the sticky header from covering its heading either way. */
+
+/* Sections that are scroll/anchor targets (see the id on each — Hero,
+   KitBuilder, KitsGrid, DayGuide, StatsAndTestimonials, FinalCTA) get
+   `scroll-mt-20` at the call site so they land clear of the sticky
+   h-16 header, whether reached via HashScrollFix or scrollIntoView(). */
 
 /* Plain-prose spacing for the legal pages (Terms/Privacy/Refund —
    components/legal/LegalPageShell.tsx) — no typography plugin

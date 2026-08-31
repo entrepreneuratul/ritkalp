@@ -5,7 +5,7 @@ import type { FestivalConfig } from "@/lib/festivals/types";
 
 export default function FinalCTA({ festival }: { festival: FestivalConfig }) {
   return (
-    <section id="contact" className="relative bg-primary py-24 sm:py-32 overflow-hidden">
+    <section id="contact" className="relative scroll-mt-20 bg-primary py-24 sm:py-32 overflow-hidden">
       <div className="absolute inset-0 mandala-texture opacity-20" />
       <span
         aria-hidden="true"
