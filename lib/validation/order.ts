@@ -18,13 +18,16 @@ export const CartLineSchema = z.object({
       // re-prices server-side, same as it already does for a canonical
       // kit's price.
       unitPrice: z.number().int().min(0),
-      /** Static content id (KitItem.id from lib/festivals/*.ts) of the
-       *  base kit this combo started from, if any — used server-side to
-       *  resolve the real DB Kit row (and its Inventoryfy SKU/price).
-       *  Not a DB row id. */
+      /** The DB `Kit.id` of the base kit this combo started from, if
+       *  any — used server-side to resolve the real Kit row (and its
+       *  Inventoryfy SKU/price). Already a DB row id, not a bare static
+       *  content id — see the longer note on CustomCartSnapshot in
+       *  context/CartContext.tsx for why that distinction matters. */
       baseKitId: z.string().optional(),
-      /** Static content ids (BuilderExtraItem.id) of every tapped-on
-       *  extra — same resolution story as baseKitId. */
+      /** Static content ids (BuilderExtraItem.itemKey from
+       *  lib/festivals/*.ts) of every tapped-on extra — unlike
+       *  baseKitId, these are genuinely bare keys, matched server-side
+       *  by itemKey, not a DB id. */
       extraIds: z.array(z.string()),
     })
     .optional(),

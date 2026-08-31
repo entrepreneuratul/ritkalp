@@ -67,17 +67,20 @@ export async function createOrderFromCart({
 
   // ---- Custom Kit Builder combos: resolve the *real* base kit + extras
   // server-side (never trusting item.custom's display snapshot for
-  // price/SKU) — baseKitId/extraIds are static content ids from
-  // lib/festivals/*.ts, not DB row ids, so they need the same id
-  // construction prisma/seed.ts uses for a curated kit's DB id. ----
+  // price/SKU). baseKitId IS already the DB Kit id here — KitBuilder.tsx
+  // sets it straight from kits.items[].id, which is DB-backed (see
+  // lib/catalog-db.ts) since the curated-kits migration, not the bare
+  // static content id `${festivalSlug}__curated__${...}` construction
+  // used to assume. (Bug found via UAT: re-prefixing an already-full id
+  // produced a nonexistent id, so baseDbKit silently resolved to
+  // undefined and the base kit's price/stock line dropped out of every
+  // Kit-Builder-with-extras order — the customer's total only ever
+  // reflected the extras.) extraIds is unaffected — those genuinely are
+  // BuilderExtraItem's bare itemKey, matched below as-is. ----
   const customLines = items.filter((i) => i.custom);
 
   const baseKitDbIds = Array.from(
-    new Set(
-      customLines
-        .filter((i) => i.custom!.baseKitId)
-        .map((i) => `${i.festivalSlug}__curated__${i.custom!.baseKitId}`),
-    ),
+    new Set(customLines.filter((i) => i.custom!.baseKitId).map((i) => i.custom!.baseKitId!)),
   );
   const baseDbKits = baseKitDbIds.length ? await prisma.kit.findMany({ where: { id: { in: baseKitDbIds } } }) : [];
   const baseDbKitById = new Map(baseDbKits.map((k) => [k.id, k]));
@@ -121,7 +124,7 @@ export async function createOrderFromCart({
       throw new Error(`Unknown kit "${item.kitId}" with no custom snapshot to fall back to`);
     }
 
-    const baseDbKit = item.custom.baseKitId ? baseDbKitById.get(`${item.festivalSlug}__curated__${item.custom.baseKitId}`) : undefined;
+    const baseDbKit = item.custom.baseKitId ? baseDbKitById.get(item.custom.baseKitId) : undefined;
     const extraDbRows = item.custom.extraIds.map((id) => dbExtraByKey.get(id)).filter((e): e is NonNullable<typeof e> => Boolean(e));
 
     const verifiedUnitPrice = (baseDbKit?.price ?? 0) + extraDbRows.reduce((sum, e) => sum + e.price, 0);

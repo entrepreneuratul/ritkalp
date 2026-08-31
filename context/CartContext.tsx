@@ -37,9 +37,18 @@ export interface CustomCartSnapshot {
   /** The real underlying selection, alongside the display snapshot
    *  above — server-side (lib/orders.ts) uses these to resolve real
    *  Inventoryfy SKUs and re-verify the price, rather than trusting
-   *  `items`/`unitPrice` for anything commercial. Static content ids
-   *  (KitItem.id / BuilderExtraItem.id from lib/festivals/*.ts), not DB
-   *  row ids — same as how a canonical kit's `kitId` cart line works. */
+   *  `items`/`unitPrice` for anything commercial.
+   *
+   *  baseKitId is the DB `Kit.id` directly (set from
+   *  festival.kits.items[].id in KitBuilder.tsx, which is DB-backed —
+   *  see lib/catalog-db.ts) — NOT a bare static content id. Don't
+   *  re-derive/re-prefix it server-side; a previous version of this
+   *  code did and silently dropped the base kit's price/stock off every
+   *  Kit-Builder-with-extras order (found via UAT — see lib/orders.ts).
+   *
+   *  extraIds, unlike baseKitId, genuinely are bare static content ids
+   *  — BuilderExtraItem.itemKey from lib/festivals/*.ts — matched
+   *  server-side by that key, not a DB id. */
   baseKitId?: string;
   extraIds: string[];
 }
