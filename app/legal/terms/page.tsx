@@ -5,15 +5,7 @@ export const metadata = { title: "Terms of Service | Ritkalp" };
 
 export default function TermsPage() {
   return (
-    <LegalPageShell title="Terms of Service" lastUpdated="24 August 2026">
-      <div className="legal-note">
-        <strong>Owner note:</strong> the sections marked with a ⚠️ below use a
-        safe, conservative default because the exact answer is a business
-        decision, not something derivable from the site — read those and
-        edit <code>app/legal/terms/page.tsx</code> directly, or tell me the
-        real answer and I&apos;ll update it.
-      </div>
-
+    <LegalPageShell title="Terms of Service" lastUpdated="27 August 2026">
       <p>
         These Terms of Service (&quot;Terms&quot;) govern your use of the{" "}
         {businessConfig.businessName} website and your purchase of puja kits
@@ -29,12 +21,6 @@ export default function TermsPage() {
         samagri kits for Navratri, Diwali, Holi, and other festivals,
         delivered pan-India.
       </p>
-      <p className="legal-note">
-        ⚠️ Business registration/entity type (e.g. sole proprietorship,
-        GST number if registered) isn&apos;t listed here yet — add it if you
-        have one; if you&apos;re not GST-registered, no action is needed.
-      </p>
-
       <h2>2. Products &amp; Pricing</h2>
       <ul>
         <li>
@@ -121,23 +107,27 @@ export default function TermsPage() {
       </p>
 
       <h2>9. Grievance Officer</h2>
-      <p className="legal-note">
-        ⚠️ In accordance with Indian e-commerce/consumer protection rules,
-        a named Grievance Officer with contact details should be listed
-        here. Using the business owner&apos;s existing contact channel as a
-        default — replace with a dedicated name/email if you&apos;d prefer:
+      <p>
+        In accordance with applicable Indian consumer protection and
+        e-commerce rules, any complaint or grievance regarding an order
+        can be addressed to:
       </p>
       <p>
-        For any complaint or grievance regarding an order, please contact
-        us on WhatsApp at {businessConfig.whatsappDisplayNumber}. We aim to
-        acknowledge every complaint within 48 hours.
+        <strong>Atul Srivastava</strong>
+        <br />
+        Email:{" "}
+        <a href="mailto:atul.viet@gmail.com" className="underline underline-offset-2">
+          atul.viet@gmail.com
+        </a>
+        <br />
+        WhatsApp: {businessConfig.whatsappDisplayNumber}
       </p>
+      <p>We aim to acknowledge every complaint within 48 hours.</p>
 
       <h2>10. Governing Law</h2>
-      <p className="legal-note">
-        ⚠️ Default: these Terms are governed by the laws of India, with
-        courts in Uttarakhand having jurisdiction (matching the business
-        address above) — change this if you&apos;d prefer a different city/state.
+      <p>
+        These Terms are governed by the laws of India, with courts in
+        Uttarakhand having exclusive jurisdiction.
       </p>
 
       <h2>11. Changes to These Terms</h2>

@@ -5,21 +5,11 @@ export const metadata = { title: "Refund & Cancellation Policy | Ritkalp" };
 
 export default function RefundPolicyPage() {
   return (
-    <LegalPageShell title="Refund & Cancellation Policy" lastUpdated="24 August 2026">
-      <div className="legal-note">
-        <strong>Owner note:</strong> the ⚠️ sections use a safe default (e.g.
-        &quot;before dispatch&quot; instead of a fixed number of days) because the
-        exact policy is your call — tell me the real numbers/policy and
-        I&apos;ll update this page, or edit{" "}
-        <code>app/legal/refund-policy/page.tsx</code> directly.
-      </div>
-
+    <LegalPageShell title="Refund & Cancellation Policy" lastUpdated="27 August 2026">
       <h2>1. Order Cancellation</h2>
-      <p className="legal-note">
-        ⚠️ Default: cancellation is allowed only before your kit has been
-        packed for dispatch, since kits are assembled fresh per order —
-        replace &quot;before dispatch&quot; with a fixed window (e.g. &quot;within 2
-        hours of ordering&quot;) if you&apos;d prefer.
+      <p>
+        Cancellation is allowed any time before your kit has been packed
+        for dispatch, since every kit is assembled fresh per order:
       </p>
       <ul>
         <li>
@@ -48,10 +38,6 @@ export default function RefundPolicyPage() {
         <li>you received the wrong item, or</li>
         <li>an item listed in your kit was missing.</li>
       </ul>
-      <p className="legal-note">
-        ⚠️ Default reporting window: 48 hours from delivery — adjust if
-        you&apos;d prefer a different number of days.
-      </p>
       <p>
         Please message us on WhatsApp within 48 hours of delivery with a
         photo of the item/kit and your order details. We&apos;ll arrange a
