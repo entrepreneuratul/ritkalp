@@ -100,16 +100,37 @@ export default function KitBuilder({ festival }: { festival: FestivalConfig }) {
 
   function handleReview() {
     if (!hasSelection) return;
+
+    // An unmodified base kit (a real catalog kit, zero extras added) IS
+    // that catalog kit — not a distinct "builder" product. Use its own
+    // id/snapshot so this merges into the same cart line as adding it
+    // via Ready-Made Kits or the Day Guide, instead of silently
+    // becoming a second row for what the customer sees as one kit
+    // (confirmed bug: same kit added both ways produced 2 cart rows of
+    // qty 1 each rather than 1 row of qty 2).
+    if (baseKit && selectedExtras.length === 0) {
+      addToCart(festival.slug, baseKit.id, 1, {
+        name: baseKit.name,
+        image: baseKit.image,
+        items: baseKit.items,
+        unitPrice: baseKit.startingPrice,
+        extraIds: [],
+      });
+      return;
+    }
+
+    // Otherwise this genuinely is a custom combo (base + extras, or a
+    // from-scratch build) with no catalog id of its own — give it a
+    // stable synthetic one so repeating the *exact* same combo still
+    // merges quantity instead of duplicating the row.
     const itemList = [
       ...(baseKit ? baseKit.items : []),
       ...selectedExtras.map((e) => `${e.name} (+₹${e.price})`),
     ];
     const name = baseKit
-      ? selectedExtras.length > 0
-        ? `${baseKit.name} + ${selectedExtras.length} extra${selectedExtras.length > 1 ? "s" : ""}`
-        : baseKit.name
+      ? `${baseKit.name} + ${selectedExtras.length} extra${selectedExtras.length > 1 ? "s" : ""}`
       : `${builder.blankBaseLabel} — ${selectedExtras.length} items`;
-    const kitId = `builder-${baseId}-${Array.from(extraIds).sort().join("-") || "none"}`;
+    const kitId = `builder-${baseId}-${Array.from(extraIds).sort().join("-")}`;
 
     addToCart(festival.slug, kitId, 1, {
       name,
